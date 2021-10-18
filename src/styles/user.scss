@@ -1,0 +1,28 @@
+@import './vars.scss';
+
+.card {
+
+  display: flex;
+  justify-content: center;
+  background-color: $lightGrey;
+  color: $white;
+
+  .online {
+    background-color: $green;
+    border-color: $white;
+    border-width: 1px;
+    border-radius: 50%;
+    width: 2vh;
+    height: 2vh;
+  }
+
+  button {
+    margin: $gutterSmall;
+  }
+
+  button:nth-child(even) {
+    background-color: $pink;
+    border-color: $pink;
+    margin-top: 0;
+  }
+}

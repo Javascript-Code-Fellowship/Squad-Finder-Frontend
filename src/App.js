@@ -8,28 +8,33 @@ import Search from './containers/Search';
 import Profile from './containers/Profile';
 import Squad from './containers/Squad';
 import Footer from './components/Footer';
+import LoginContext from './context/LoginContext';
+import SignIn from './components/SignIn';
 
 function App() {
   return (
     <>
-      <Router>
+      <LoginContext>
         <Header />
-        <Switch>
-          <Route path="/profile" exact>
-            <Profile />
-          </Route>
-          <Route path="/search" exact>
-            <Search />
-          </Route>
-          <Route path="/squad/:name" exact>
-            <Squad />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
+        <SignIn />
+        <Router>
+          <Switch>
+            <Route path="/profile" exact>
+              <Profile />
+            </Route>
+            <Route path="/search" exact>
+              <Search />
+            </Route>
+            <Route path="/squad/:name" exact>
+              <Squad />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </Router>
         <Footer />
-      </Router>
+      </LoginContext>
     </>
   );
 }
