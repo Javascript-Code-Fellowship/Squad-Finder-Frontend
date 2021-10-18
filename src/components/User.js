@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 
-import ProfilePhoto from '../assets/Jess.png'
+import ProfilePhoto from '../assets/Jess.png';
 
 function User() {
   return (
@@ -14,7 +14,7 @@ function User() {
       <Button>Add Friend</Button>
       <Button>Remove Friend</Button>
     </Card>
-  )
+  );
 }
 
-export default User
+export default User;
