@@ -4,11 +4,7 @@
 
 Contributors:
 
-Jaya DeHart
-Gina Hobbs
-Jessica Parker
-David Whitmore
-Rachael Rice
+Jaya DeHart, Gina Hobbs, Jessica Parker, David Whitmore, Rachael Rice
 
 ## Version 0.0.1
 
