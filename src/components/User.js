@@ -2,7 +2,7 @@ import React from 'react';
 import { Case, Default, Switch, When } from 'react-if';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 
-import ProfilePhoto from '../assets/Jess.png'
+import ProfilePhoto from '../assets/Jess.png';
 
 let placeholder = "profile";
 let online = true;
@@ -30,7 +30,7 @@ function User() {
         </Default>
       </Switch>
     </Card>
-  )
+  );
 }
 
-export default User
+export default User;
