@@ -1,4 +1,4 @@
-@import './vars.scss';
+@import "./vars.scss";
 
 .header-main {
   width: 100vw;
@@ -20,6 +20,14 @@
   display: flex;
   justify-content: space-around;
   background: linear-gradient(to left, $purple, $blue);
+
+  a {
+    color: $white;
+    text-decoration: none;
+  }
+  a:hover {
+    color: $green;
+  }
 }
 
 @media (max-width: 768px) {
@@ -28,10 +36,5 @@
     flex-direction: column;
     align-items: flex-start !important;
     background: none;
-
-    .btn {
-      margin: 1.5%;
-      background-color: $blue;
-    }
   }
 }

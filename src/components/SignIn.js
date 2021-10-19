@@ -3,6 +3,7 @@ import { Form, Button, Modal } from 'react-bootstrap';
 import { LoginContext } from '../context/LoginContext';
 import { useHistory } from 'react-router-dom';
 import logo from '../assets/sf-logo.png';
+import { When } from 'react-if';
 
 function SignIn() {
   const history = useHistory();
@@ -23,9 +24,16 @@ function SignIn() {
 
   return (
     <div>
-      <Button variant="primary" onClick={handleToggle}>
-        Sign In
-      </Button>
+      <When condition={!loginContext.isLoggedIn}>
+        <Button variant="primary" onClick={handleToggle}>
+          Sign In
+        </Button>
+      </When>
+      <When condition={loginContext.isLoggedIn}>
+        <Button variant="primary" onClick={loginContext.logout}>
+          Sign Out
+        </Button>
+      </When>
       <Modal show={loginContext.show} onHide={handleToggle}>
         <div className={'logoSpace'}>
           <img src={logo} alt="site logo" />
