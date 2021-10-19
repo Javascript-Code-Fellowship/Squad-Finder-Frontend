@@ -7,12 +7,12 @@ import Feed from '../components/Feed';
 function Home() {
   return (
     <div>
-      <Container>
+      <Container fluid>
         <Row>
-          <Col xs={12} lg={6}>
+          <Col xs={12} lg={4}>
             <User />
           </Col>
-          <Col xs={12} lg={6}>
+          <Col xs={12} lg={8}>
             <Feed />
           </Col>
         </Row>

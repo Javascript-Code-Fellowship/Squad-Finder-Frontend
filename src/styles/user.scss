@@ -1,7 +1,6 @@
 @import './vars.scss';
 
-.card {
-
+.user.card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,17 +9,14 @@
   padding: $gutterMedium;
   color: $white;
   margin: $gutterSmall;
-  height: 66%;
 
   img {
-
     width: 65%;
     height: auto;
-
+    margin-bottom: $gutterSmall;
   }
 
   .online {
-
     display: flex;
     flex-direction: row;
 
@@ -38,6 +34,12 @@
   button {
     margin: $gutterSmall;
     width: 80%;
+    color: $white;
+
+    svg {
+      margin: $gutterSmall;
+      flex-grow: 1;
+    }
   }
 
   button:nth-child(odd) {
