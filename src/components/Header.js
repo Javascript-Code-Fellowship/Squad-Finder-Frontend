@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navbar, Nav, Button } from 'react-bootstrap';
+import SignIn from './SignIn';
 
 function Header() {
   return (
@@ -8,7 +9,7 @@ function Header() {
         <div className="header-main">
           <div className="header-top">
             <h1>SquadFinder</h1>
-            <Button variant="primary">Login</Button>
+            <SignIn />
           </div>
           <div className="header-bottom-1">
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />

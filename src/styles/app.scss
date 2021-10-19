@@ -1,9 +1,8 @@
 @import './header.scss';
 
+@import './user.scss';
 
-@import "./user.scss";
-
-@import "./loginModal.scss";
+@import './loginModal.scss';
 
 $theme-colors: (
   'primary': #0270f2,
@@ -16,6 +15,3 @@ $theme-colors: (
 );
 
 @import '~bootstrap/scss/bootstrap';
-
-
-
