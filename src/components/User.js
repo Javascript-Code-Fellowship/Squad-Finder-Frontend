@@ -1,12 +1,33 @@
 import React from "react";
 import { Case, Default, Switch, When } from "react-if";
 import { Button, Card } from "react-bootstrap";
+import axios from "axios";
 
 import ProfilePhoto from "../assets/Jess.png";
+import { LoginContext } from "../context/LoginContext";
 
 let online = true;
 
 function User(props) {
+  async function addFriend(id) {
+    console.log("added");
+    // const config = {
+    //   method: "post",
+    //   url: `https://squadfinderapp.herokuapp.com/addfriend/${id}`,
+    //   headers: { authorization: `Bearer ${LoginContext.user.token}` },
+    // };
+    // await axios(config);
+  }
+  async function blockFriend(id) {
+    console.log("blocked");
+    // const config = {
+    //   method: "delete",
+    //   url: `https://squadfinderapp.herokuapp.com/blockFriend/${id}`,
+    //   headers: { authorization: `Bearer ${LoginContext.user.token}` },
+    // };
+    // await axios(config);
+  }
+
   return (
     <Card className="user" fluid>
       <Card.Title>@USERNAME</Card.Title>
@@ -23,7 +44,7 @@ function User(props) {
         </Case>
         <Case condition={props.placeholder === "profile"}>
           <div>
-            <Button>
+            <Button onClick={() => addFriend()}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -41,7 +62,7 @@ function User(props) {
               </svg>
               Add Friend
             </Button>
-            <Button>
+            <Button onClick={() => blockFriend()}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
