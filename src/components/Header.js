@@ -2,6 +2,8 @@ import React from "react";
 import { Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import SignIn from "./SignIn";
+import logo from '../assets/sf-logo2.png';
+
 
 function Header() {
   return (
@@ -9,7 +11,7 @@ function Header() {
       <Navbar expand="md">
         <div className="header-main">
           <div className="header-top">
-            <h1>SquadFinder</h1>
+            <img src={logo} alt="site logo" />
             <SignIn />
           </div>
           <div className="header-bottom-1">

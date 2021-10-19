@@ -1,7 +1,9 @@
 import React, { useContext, useState } from "react";
 import { Form, Button, Modal } from "react-bootstrap";
 import { LoginContext } from "../context/LoginContext";
-import logo from "../assets/sf-logo.png";
+
+import logo from "../assets/sf-logo2.png";
+import { When } from "react-if";
 
 function SignIn() {
   const loginContext = useContext(LoginContext);
