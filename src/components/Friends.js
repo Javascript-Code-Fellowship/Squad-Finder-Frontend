@@ -6,6 +6,7 @@ function Friends() {
   return (
     <Card>
       <Card.Title>Friends</Card.Title>
+      <Card.Img variant="bottom" src="" roundedCircle/>
     </Card>
   )
 }
