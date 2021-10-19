@@ -4,7 +4,6 @@ import { Button, Card } from "react-bootstrap";
 
 import ProfilePhoto from "../assets/Jess.png";
 
-let placeholder = "myProfile";
 let online = true;
 
 function User(props) {
