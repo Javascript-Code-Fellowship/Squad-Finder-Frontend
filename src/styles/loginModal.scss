@@ -1,0 +1,39 @@
+@import "./vars.scss";
+
+.modal-content {
+  background-color: $white;
+  color: $darkGrey;
+
+  p:hover {
+    cursor: pointer;
+  }
+  p {
+    color: $blue;
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
+  button {
+    background-color: $green;
+  }
+}
+
+form {
+  padding: 0 5vw 40px 5vw;
+
+  button {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+.logoSpace {
+  background-color: $darkGrey;
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 95%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+}
