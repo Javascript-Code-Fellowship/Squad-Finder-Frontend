@@ -10,6 +10,7 @@ import Squad from "./containers/Squad";
 import Footer from "./components/Footer";
 import LoginContext from "./context/LoginContext";
 
+
 function App() {
   return (
     <>
