@@ -1,9 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { Form, Button, Modal } from 'react-bootstrap';
 import { LoginContext } from '../context/LoginContext';
+import { useHistory } from 'react-router-dom';
 import logo from '../assets/sf-logo.png';
 
 function SignIn() {
+  const history = useHistory();
   const loginContext = useContext(LoginContext);
 
   const [showSignUpFields, setShowSignUpFields] = useState(true);
@@ -16,6 +18,7 @@ function SignIn() {
     e.preventDefault();
     showSignUpFields ? loginContext.signIn(e) : loginContext.signUp(e);
     handleToggle();
+    history.push('/profileCreate');
   };
 
   return (
