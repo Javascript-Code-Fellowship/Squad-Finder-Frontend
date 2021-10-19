@@ -1,10 +1,13 @@
 import React from 'react'
 
+import { Card } from 'react-bootstrap';
+
 function Friends() {
   return (
-    <div>
-      
-    </div>
+    <Card>
+      <Card.Title>Friends</Card.Title>
+      <Card.Img variant="bottom" src="" roundedCircle/>
+    </Card>
   )
 }
 
