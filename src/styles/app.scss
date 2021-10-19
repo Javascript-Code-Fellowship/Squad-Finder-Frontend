@@ -1,3 +1,15 @@
-@import "~bootstrap/scss/bootstrap";
+@import './header.scss';
 
-@import "./user.scss"
+$theme-colors: (
+  'primary': #0270f2,
+  'secondary': #ff0086,
+  'purple': #7c28c4,
+  'green': #38b273,
+  'dark-bg': #121416,
+  'light-bg': #232627,
+  'white': #f5f5f5,
+);
+
+@import '~bootstrap/scss/bootstrap';
+
+@import './user.scss';
