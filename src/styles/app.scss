@@ -1,25 +1,25 @@
-@import './header.scss';
+@import "./header.scss";
 
-@import './user.scss';
+@import "./user.scss";
 
 html,
 #root {
   background-color: $darkGrey;
   color: $white;
 }
-@import './user.scss';
-@import './profile.scss';
-@import './friends.scss';
-@import './loginModal.scss';
-
+@import "./user.scss";
+@import "./profile.scss";
+@import "./friends.scss";
+@import "./loginModal.scss";
+@import "./search.scss";
 $theme-colors: (
-  'primary': #0270f2,
-  'secondary': #ff0086,
-  'purple': #7c28c4,
-  'green': #38b273,
-  'dark-bg': #121416,
-  'light-bg': #232627,
-  'white': #f5f5f5,
+  "primary": #0270f2,
+  "secondary": #ff0086,
+  "purple": #7c28c4,
+  "green": #38b273,
+  "dark-bg": #121416,
+  "light-bg": #232627,
+  "white": #f5f5f5,
 );
 
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";

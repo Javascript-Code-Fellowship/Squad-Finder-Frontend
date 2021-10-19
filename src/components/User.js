@@ -1,5 +1,6 @@
 import React from "react";
 import { Case, Default, Switch, When } from "react-if";
+import { Link } from "react-router-dom";
 import { Button, Card } from "react-bootstrap";
 import axios from "axios";
 
@@ -77,6 +78,11 @@ function User(props) {
               Block User
             </Button>
           </div>
+        </Case>
+        <Case condition={props.placeholder === "search"}>
+          <Link to="/profile">
+            <Button>See Profile</Button>
+          </Link>
         </Case>
         <Default>
           <div>
