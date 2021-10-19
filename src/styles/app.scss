@@ -1,3 +1,9 @@
 @import "~bootstrap/scss/bootstrap";
 
-@import "./user.scss"
+@import "./user.scss";
+@import "./profile.scss";
+
+html, #root {
+  background-color: $darkGrey;
+  color: $white;
+}

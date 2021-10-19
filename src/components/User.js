@@ -1,6 +1,6 @@
 import React from 'react';
 import { Case, Default, Switch, When } from 'react-if';
-import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 
 import ProfilePhoto from '../assets/Jess.png'
 
@@ -11,22 +11,28 @@ function User() {
   return (
     <Card>
       <Card.Title>@USERNAME</Card.Title>
-      <Card.Img variant="bottom" src={ProfilePhoto} />
+      <Card.Img variant="bottom" src={ProfilePhoto} roundedCircle/>
       <When condition={online}>
-        <div className="online"> </div>
-        <p>ONLINE</p>
+        <div className="online">
+          <span className="online-icon"> </span>
+          <p>ONLINE</p>
+        </div>
       </When>
       <Switch>
         <Case condition={placeholder === "myProfile"}>
           <Button>Edit Profile</Button>
         </Case>
         <Case condition={placeholder === "profile"}>
-          <Button>Add Friend</Button>
-          <Button>Remove Friend</Button>
+          <div>
+            <Button>Add Friend</Button>
+            <Button>Remove Friend</Button>
+          </div>
         </Case>
         <Default>
-          <Button>My Squads</Button>
-          <Button>My Games</Button>
+          <div>
+            <Button>My Squads</Button>
+            <Button>My Games</Button>
+          </div>
         </Default>
       </Switch>
     </Card>

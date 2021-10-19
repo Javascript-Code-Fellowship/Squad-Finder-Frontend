@@ -1,0 +1,42 @@
+@import './vars.scss';
+
+.profile.container-fluid {
+
+  .row {
+    margin: $gutterSmall;
+
+    .about.col-lg-8.col-12 {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    
+      h2 {
+        font-family: $fontLarge;
+      }
+    
+      .games {
+        display: flex;
+    
+        img {
+          flex-shrink: 2;
+          width: 25%;
+          height: auto;
+          margin: $gutterSmall $gutterSmall $gutterSmall 0;
+        }
+      }
+    
+      .squads-carosel {
+        img {
+          width: 20%;
+          height: auto;
+          margin: $gutterSmall / 2
+        }
+      }
+  
+    }
+
+  }
+
+
+
+}
