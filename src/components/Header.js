@@ -1,6 +1,7 @@
-import React from 'react';
-import { Navbar, Nav, Button } from 'react-bootstrap';
-import SignIn from './SignIn';
+import React from "react";
+import { Navbar } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import SignIn from "./SignIn";
 
 function Header() {
   return (
@@ -14,9 +15,10 @@ function Header() {
           <div className="header-bottom-1">
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse className="header-bottom">
-              <Button variant="outline-white">Home</Button>
-              <Button variant="outline-white">Squads</Button>
-              <Button variant="outline-white">Account</Button>
+              <Link to="/">Home</Link>
+              <Link to="/">Squads</Link>
+              <Link to="/search">Find Friends</Link>
+              <Link to="/profile">Profile</Link>
             </Navbar.Collapse>
           </div>
         </div>
