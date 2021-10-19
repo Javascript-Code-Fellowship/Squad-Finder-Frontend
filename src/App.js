@@ -15,9 +15,8 @@ function App() {
   return (
     <>
       <LoginContext>
-        <Header />
-        <SignIn />
         <Router>
+          <Header />
           <Switch>
             <Route path="/profile" exact>
               <Profile />
@@ -32,8 +31,8 @@ function App() {
               <Home />
             </Route>
           </Switch>
+          <Footer />
         </Router>
-        <Footer />
       </LoginContext>
     </>
   );
