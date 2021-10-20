@@ -1,9 +1,9 @@
-import React, { useContext, useState } from 'react';
-import { Form, Button, Modal } from 'react-bootstrap';
-import { LoginContext } from '../context/LoginContext';
-import { useHistory } from 'react-router-dom';
-import logo from '../assets/sf-logo.png';
-import { When } from 'react-if';
+import React, { useContext, useState } from "react";
+import { Form, Button, Modal } from "react-bootstrap";
+import { LoginContext } from "../context/LoginContext";
+import { useHistory } from "react-router-dom";
+import logo from "../assets/sf-logo2.png";
+import { When } from "react-if";
 
 function SignIn() {
   const history = useHistory();
@@ -19,7 +19,7 @@ function SignIn() {
     e.preventDefault();
     showSignUpFields ? loginContext.signIn(e) : loginContext.signUp(e);
     handleToggle();
-    history.push('/profileCreate');
+    history.push("/profileCreate");
   };
 
   return (
@@ -28,23 +28,23 @@ function SignIn() {
         variant="primary"
         onClick={loginContext.isLoggedIn ? loginContext.logout : handleToggle}
       >
-        {loginContext.isLoggedIn ? 'Sign Out' : 'Sign In'}
+        {loginContext.isLoggedIn ? "Sign Out" : "Sign In"}
       </Button>
 
       <Modal show={loginContext.show} onHide={handleToggle}>
-        <div className={'logoSpace'}>
+        <div className={"logoSpace"}>
           <img src={logo} alt="site logo" />
         </div>
         <Modal.Header closeButton>
           <Modal.Title>
-            {showSignUpFields ? 'Sign-In to' : 'Sign-Up for'} Squadfinder
+            {showSignUpFields ? "Sign-In to" : "Sign-Up for"} Squadfinder
           </Modal.Title>
         </Modal.Header>
         <Form onSubmit={(e) => handleFormSubmit(e)}>
           <p onClick={handleShowSignUpFields}>
             {showSignUpFields
-              ? 'Not a member? Click here to sign-up.'
-              : 'Already a member? Click here to sign-in.'}
+              ? "Not a member? Click here to sign-up."
+              : "Already a member? Click here to sign-in."}
           </p>
           <Form.Group className="mb-3" controlId="formBasicText">
             <Form.Label>Username</Form.Label>
@@ -69,7 +69,7 @@ function SignIn() {
             <Form.Control type="password" placeholder="Password" />
           </Form.Group>
           <Button variant="primary" type="submit">
-            {showSignUpFields ? 'Sign-In' : 'Sign-Up'}
+            {showSignUpFields ? "Sign-In" : "Sign-Up"}
           </Button>
         </Form>
       </Modal>
