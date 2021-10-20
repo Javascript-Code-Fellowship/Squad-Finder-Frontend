@@ -34,9 +34,9 @@ function Search() {
       </Form>
       <Container>
         <Row>
-          {users.map((col) => (
+          {users.map((userProfile) => (
             <Col lg="4" xs="12" md="6">
-              <User profile={col} />
+              <User profile={userProfile} />
             </Col>
           ))}
         </Row>

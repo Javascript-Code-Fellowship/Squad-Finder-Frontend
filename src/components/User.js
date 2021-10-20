@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState } from "react";
 import { Case, Default, Switch, When } from "react-if";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { Button, Card } from "react-bootstrap";
 import axios from "axios";
 
@@ -8,14 +8,15 @@ import ProfilePhoto from "../assets/Jess.png";
 import { LoginContext } from "../context/LoginContext";
 
 let online = true;
-let id = 1;
 
 function User(props) {
 
   const loginContext = useContext(LoginContext);
   const location = useLocation();
+  const { id } = useParams();
 
   const [profile, setProfile] = useState(null);
+  const [profileId, setProfileId] = useState(null);
 
   async function addFriend(id) {
     console.log("added");
@@ -58,26 +59,6 @@ function User(props) {
     console.log("reject");
   }
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  async function viewProfile() {
-    if (loginContext.isLoggedIn) {
-      const config = {
-        method: "get",
-        url: `https://squadfinderapp.herokuapp.com/profile`,
-        headers: { authorization: `Bearer ${loginContext.user.token}` },
-      };
-
-      let response = await axios(config);
-      setProfile(response.data);
-      console.log("Response from User.js", response.data);
-    }
-  }
-
-  useEffect(() => {
-    viewProfile();
-    console.log("card location: ", location.pathname);
-  }, [loginContext.isLoggedIn]);
-
   return (
     <When condition={loginContext.isLoggedIn}>
       <Card className="user" fluid>
@@ -92,10 +73,10 @@ function User(props) {
           </div>
         </When>
         <Switch>
-          <Case condition={location.pathname === "/profile"}>
+          <Case condition={location.pathname === `/profile/${loginContext?.user?.user?.id}`}>
             <Button>Edit Profile</Button>
           </Case>
-          <Case condition={location.pathname === `/profile/${id}`}>
+          <Case condition={location.pathname === `/profile/${props.profile?.UserId}`}>
             <div>
               <Button onClick={() => addFriend()}>
                 <svg
@@ -132,7 +113,7 @@ function User(props) {
             </div>
           </Case>
           <Case condition={location.pathname === "/search"}>
-            <Link to="/profile">
+            <Link to={`/profile/${props.profile ? props.profile.UserId : ' '}`}>
               <Button>Profile</Button>
             </Link>
           </Case>

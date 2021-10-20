@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+
+import { LoginContext } from "../context/LoginContext";
 
 import User from '../components/User';
 import Feed from '../components/Feed';
 import Friends from '../components/Friends';
 
 function Home() {
+  const loginContext = useContext(LoginContext);
+
   return (
     <div>
       <Container fluid>

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { When } from "react-if";
+import { useLocation, useParams } from "react-router-dom";
+import { Case, Switch, When } from "react-if";
 import { Col, Container, Image, Row } from "react-bootstrap";
 
 import User from "../components/User";
@@ -13,8 +14,11 @@ import Apex from "../assets/apex.jpg";
 import Fortnite from "../assets/Fortnite.jpg";
 import Mario from "../assets/mario.jpg";
 
-function Profile() {
+function Profile(props) {
+
   const loginContext = useContext(LoginContext);
+  const location = useLocation();
+  const { id } = useParams();
 
   const [profile, setProfile] = useState(null);
 
@@ -22,7 +26,7 @@ function Profile() {
     if (loginContext.isLoggedIn) {
       const config = {
         method: "get",
-        url: `https://squadfinderapp.herokuapp.com/profile`,
+        url: `https://squadfinderapp.herokuapp.com/profile/${id}`,
         headers: { authorization: `Bearer ${loginContext.user.token}` },
       };
 
@@ -34,12 +38,12 @@ function Profile() {
 
   useEffect(() => {
     viewProfile();
-  }, [loginContext.isLoggedIn]);
+  }, [id]);
 
   //the second when condition isn't working yet because the profile isn't being saved to the API
   return (
     <When condition={loginContext.isLoggedIn}>
-      {/* <When condition={profile}> */}
+      {console.log("profile path: ", location.pathname)}
       <Container className="profile" fluid>
         <Row>
           <Col xs={12} lg={4}>
@@ -66,7 +70,6 @@ function Profile() {
           </Col>
         </Row>
       </Container>
-      {/* </When> */}
     </When>
   );
 }
