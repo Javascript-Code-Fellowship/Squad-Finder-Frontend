@@ -1,0 +1,20 @@
+@import './vars.scss';
+
+.squad-mates {
+  display: flex;
+}
+
+.input-title {
+  text-align: center;
+}
+
+.create-squad {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .btn {
+    width: 25%;
+  }
+}

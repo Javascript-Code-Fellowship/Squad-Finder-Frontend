@@ -26,9 +26,7 @@ function ProfileCreate() {
     defaultValues: { bio: '', game: '' },
   });
 
-  async function onSubmit(data) {
-    console.log(data);
-  }
+  async function onSubmit(data) {}
 
   return (
     <div className="profile-create">
@@ -39,6 +37,7 @@ function ProfileCreate() {
           control={control}
           errors={errors}
           name="bio"
+          as="textarea"
         />
         <h4>Favorite Game</h4>
         <div className="profile-games">

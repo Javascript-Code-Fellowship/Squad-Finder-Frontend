@@ -6,10 +6,10 @@ import { Form } from 'react-bootstrap';
 //based on react-bootstrap's form group structure
 //react-hook-form's <Controller/> component gives you easy access to library components values and validity
 function ControlledInput(props) {
-  const { title, name, control, errors } = props;
+  const { title, name, control, errors, type } = props;
   return (
     <Form.Group>
-      <h4>{title}</h4>
+      <h4 className="input-title">{title}</h4>
       <Controller
         name={name}
         control={control}
@@ -17,7 +17,7 @@ function ControlledInput(props) {
         render={({ field }) => (
           <Form.Control
             {...field}
-            as="textarea"
+            as={type}
             isInvalid={!!errors[name]}
             autoComplete="off"
           />
