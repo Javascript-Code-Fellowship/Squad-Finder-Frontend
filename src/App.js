@@ -12,6 +12,7 @@ import Header from "./components/Header";
 import SquadsContext from "./context/SquadsContext";
 import FriendRequests from "./components/FriendRequests";
 import Home from "./containers/Home";
+import CreateSquad from "./components/CreateSquad";
 
 function App() {
   return (
@@ -32,6 +33,9 @@ function App() {
               </Route>
               <Route path="/squad" exact>
                 <Squad />
+              </Route>
+              <Route path="/createSquad" exact>
+                <CreateSquad />
               </Route>
               <Route path="/friendRequests" exact>
                 <FriendRequests />
