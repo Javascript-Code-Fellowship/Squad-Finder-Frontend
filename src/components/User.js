@@ -84,6 +84,10 @@ function User(props) {
             <Button>See Profile</Button>
           </Link>
         </Case>
+        <Case condition={props.placeholder === "request"}>
+          <Button onClick={props.acceptRequest}>Accept</Button>
+          <Button onClick={props.rejectRequest}>Reject</Button>
+        </Case>
         <Default>
           <div>
             <Button>My Squads</Button>
