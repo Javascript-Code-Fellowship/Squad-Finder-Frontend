@@ -1,6 +1,6 @@
-@import './header.scss';
-@import 'profileCreate.scss';
-@import './user.scss';
+@import "./header.scss";
+@import "profileCreate.scss";
+@import "./user.scss";
 
 html,
 #root {
@@ -14,15 +14,16 @@ html,
 @import "./loginModal.scss";
 @import "./search.scss";
 @import "./friendRequests.scss";
+@import "./squadPage.scss";
 
 $theme-colors: (
-  'primary': #0270f2,
-  'secondary': #ff0086,
-  'purple': #7c28c4,
-  'green': #38b273,
-  'dark-bg': #121416,
-  'light-bg': #232627,
-  'white': #f5f5f5,
+  "primary": #0270f2,
+  "secondary": #ff0086,
+  "purple": #7c28c4,
+  "green": #38b273,
+  "dark-bg": #121416,
+  "light-bg": #232627,
+  "white": #f5f5f5,
 );
 
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";

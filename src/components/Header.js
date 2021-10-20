@@ -2,8 +2,7 @@ import React from "react";
 import { Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import SignIn from "./SignIn";
-import logo from '../assets/sf-logo2.png';
-
+import logo from "../assets/sf-logo2.png";
 
 function Header() {
   return (
@@ -18,7 +17,7 @@ function Header() {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse className="header-bottom">
               <Link to="/">Home</Link>
-              <Link to="/">Squads</Link>
+              <Link to="/squad">Squads</Link>
               <Link to="/search">Find Friends</Link>
               <Link to="/profile">Profile</Link>
             </Navbar.Collapse>
