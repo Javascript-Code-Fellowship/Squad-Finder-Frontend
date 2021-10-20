@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import SignIn from "./SignIn";
-import logo from '../assets/sf-logo2.png';
+import logo from "../assets/sf-logo2.png";
 
+import { LoginContext } from "../context/LoginContext";
 
 function Header() {
+
+  const loginContext = useContext(LoginContext);
+
   return (
     <>
       <Navbar expand="md">
@@ -17,10 +21,12 @@ function Header() {
           <div className="header-bottom-1">
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse className="header-bottom">
+
               <Link to="/">HOME</Link>
               <Link to="/">SQUADS</Link>
               <Link to="/search">FIND FRIENDS</Link>
               <Link to="/profile">PROFILE</Link>
+
             </Navbar.Collapse>
           </div>
         </div>
