@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { When } from 'react-if';
 
 import { Card, Image } from 'react-bootstrap';
+
+import { LoginContext } from "../context/LoginContext";
 
 import david from '../assets/David.png';
 import gina from '../assets/Gina.png';
@@ -15,19 +18,23 @@ const dummyFriends = [
   { username: 'David', userImage: david },
   { username: 'Gina', userImage: gina },
   { username: 'Gina', userImage: gina },
-  { username: 'Gina', userImage: gina },
 ];
 
 function Friends() {
+
+  const loginContext = useContext(LoginContext);
+
   return (
-    <Card className="friends" fluid>
-      <Card.Title>Friends</Card.Title>
-      <div className="friends-list">
-        {dummyFriends.map((friend) => (
-          <Image src={friend.userImage} roundedCircle />
-        ))}
-      </div>
-    </Card>
+    <When condition={loginContext.isLoggedIn}>
+      <Card className="friends" fluid>
+        <Card.Title>Friends</Card.Title>
+        <div className="friends-list">
+          {dummyFriends.map((friend) => (
+            <Image src={friend.userImage} roundedCircle />
+          ))}
+        </div>
+      </Card>
+    </When>
   );
 }
 

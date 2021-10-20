@@ -1,16 +1,64 @@
-import React from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { Case, Default, Switch, When } from "react-if";
+import { Link } from "react-router-dom";
 import { Button, Card } from "react-bootstrap";
+import axios from "axios";
 
 import ProfilePhoto from "../assets/Jess.png";
+import { LoginContext } from "../context/LoginContext";
 
 let online = true;
 
 function User(props) {
+
+  const loginContext = useContext(LoginContext);
+
+  const [profile, setProfile] = useState(null);
+
+  async function addFriend(id) {
+    console.log("added");
+    // const config = {
+    //   method: "post",
+    //   url: `https://squadfinderapp.herokuapp.com/addfriend/${id}`,
+    //   headers: { authorization: `Bearer ${LoginContext.user.token}` },
+    // };
+    // await axios(config);
+  }
+  async function blockFriend(id) {
+    console.log("blocked");
+    // const config = {
+    //   method: "delete",
+    //   url: `https://squadfinderapp.herokuapp.com/blockFriend/${id}`,
+    //   headers: { authorization: `Bearer ${LoginContext.user.token}` },
+    // };
+    // await axios(config);
+  }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  async function viewProfile() {
+    if (loginContext.isLoggedIn) {
+      const config = {
+        method: "get",
+        url: `https://squadfinderapp.herokuapp.com/profile`,
+        headers: { authorization: `Bearer ${loginContext.user.token}`},
+      }
+  
+      let response = await axios(config)
+      setProfile(response.data);
+      console.log("Response from User.js", response.data);
+    }
+  }
+
+  useEffect(() => {
+    viewProfile();
+  }, [loginContext.isLoggedIn])
+
   return (
-    <Card className="user" fluid>
-      <Card.Title>@USERNAME</Card.Title>
-      <Card.Img variant="bottom" src={ProfilePhoto} roundedCircle />
+
+    <When condition={loginContext.isLoggedIn}>
+      <Card className="user" fluid>
+        <Card.Title>@{props.profile ? props.profile.username.toUpperCase() : ''}</Card.Title>
+        <Card.Img variant="bottom" src={ProfilePhoto} roundedCircle />
       <When condition={online}>
         <div className="online">
           <span className="online-icon"> </span>
@@ -23,7 +71,7 @@ function User(props) {
         </Case>
         <Case condition={props.placeholder === "profile"}>
           <div>
-            <Button>
+            <Button onClick={() => addFriend()}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -41,7 +89,7 @@ function User(props) {
               </svg>
               Add Friend
             </Button>
-            <Button>
+            <Button onClick={() => blockFriend()}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -57,14 +105,20 @@ function User(props) {
             </Button>
           </div>
         </Case>
-        <Default>
-          <div>
-            <Button>My Squads</Button>
-            <Button>My Games</Button>
-          </div>
-        </Default>
-      </Switch>
-    </Card>
+        <Case condition={props.placeholder === "search"}>
+          <Link to="/profile">
+            <Button>See Profile</Button>
+          </Link>
+        </Case>
+          <Default>
+            <div>
+              <Button>My Squads</Button>
+              <Button>My Games</Button>
+            </div>
+          </Default>
+        </Switch>
+      </Card>
+    </When>
   );
 }
 

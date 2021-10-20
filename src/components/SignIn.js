@@ -24,16 +24,13 @@ function SignIn() {
 
   return (
     <div>
-      <When condition={!loginContext.isLoggedIn}>
-        <Button variant="primary" onClick={handleToggle}>
-          Sign In
-        </Button>
-      </When>
-      <When condition={loginContext.isLoggedIn}>
-        <Button variant="primary" onClick={loginContext.logout}>
-          Sign Out
-        </Button>
-      </When>
+      <Button
+        variant="primary"
+        onClick={loginContext.isLoggedIn ? loginContext.logout : handleToggle}
+      >
+        {loginContext.isLoggedIn ? 'Sign Out' : 'Sign In'}
+      </Button>
+
       <Modal show={loginContext.show} onHide={handleToggle}>
         <div className={'logoSpace'}>
           <img src={logo} alt="site logo" />
