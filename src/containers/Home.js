@@ -8,6 +8,7 @@ import Feed from '../components/Feed';
 import Friends from '../components/Friends';
 
 function Home() {
+
   const loginContext = useContext(LoginContext);
 
   return (
@@ -15,7 +16,7 @@ function Home() {
       <Container fluid>
         <Row>
           <Col xs={12} lg={4}>
-            <User />
+            <User profile={loginContext.user.user}/>
             <Friends />
           </Col>
           <Col xs={12} lg={8}>
