@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 import LoginContext from "./context/LoginContext";
 import SquadsContext from "./context/SquadsContext";
 
+
 function App() {
   return (
     <>

@@ -2,14 +2,15 @@
 
 @import './user.scss';
 
-html, #root {
+html,
+#root {
   background-color: $darkGrey;
   color: $white;
 }
-@import "./user.scss";
-@import "./profile.scss";
-
-@import "./loginModal.scss";
+@import './user.scss';
+@import './profile.scss';
+@import './friends.scss';
+@import './loginModal.scss';
 
 
 $theme-colors: (
@@ -22,9 +23,4 @@ $theme-colors: (
   'white': #f5f5f5,
 );
 
-
 @import '~bootstrap/scss/bootstrap';
-
-
-
-
