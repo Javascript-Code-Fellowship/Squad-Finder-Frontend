@@ -23,7 +23,7 @@ function Header() {
             <Navbar.Collapse className="header-bottom">
 
               <Link to="/">HOME</Link>
-              <Link to="/">SQUADS</Link>
+              <Link to="/squad">SQUADS</Link>
               <Link to="/search">FIND FRIENDS</Link>
               <Link to={loginContext.isLoggedIn ? `/profile/${loginContext.user.user.id}` : `/profile`}>PROFILE</Link>
 
