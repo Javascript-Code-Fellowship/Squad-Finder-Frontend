@@ -32,7 +32,6 @@ function Profile(props) {
 
       let response = await axios(config);
       setProfile(response.data);
-      console.log("Response from User.js", response.data);
     }
   }
 
