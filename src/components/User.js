@@ -10,7 +10,6 @@ import { LoginContext } from "../context/LoginContext";
 let online = true;
 
 function User(props) {
-
   const loginContext = useContext(LoginContext);
   const location = useLocation();
   const { id } = useParams();
@@ -41,24 +40,24 @@ function User(props) {
 
   //still needs to hide or remove the request. Probably could be solved with integration with the API and triggering a refresh of the DB pull or requests as the API does remove the request.
   //will probably have to make these function async
-  function acceptRequest(id) {
-    // const config = {
-    //   method: "post",
-    //   url: `https://squadfinderapp.herokuapp.com/friends/${id}`,
-    //   headers: { authorization: `Bearer ${LoginContext.user.token}` },
-    // };
-    // axios(config);
-    console.log("accept");
+  async function acceptRequest(id) {
+    const config = {
+      method: "post",
+      url: `https://squadfinderapp.herokuapp.com/friends/${id}`,
+      headers: { authorization: `Bearer ${loginContext.user.token}` },
+    };
+    await axios(config);
+    props.getRequests();
   }
 
-  function rejectRequest(id) {
-    // const config = {
-    //   method: "reject",
-    //   url: `https://squadfinderapp.herokuapp.com/friendRequests/${id}`,
-    //   headers: { authorization: `Bearer ${LoginContext.user.token}` },
-    // };
-    // axios(config);
-    console.log("reject");
+  async function rejectRequest(id) {
+    const config = {
+      method: "reject",
+      url: `https://squadfinderapp.herokuapp.com/friendRequests/${id}`,
+      headers: { authorization: `Bearer ${loginContext.user.token}` },
+    };
+    await axios(config);
+    props.getRequests();
   }
 
   async function getFriends() {
@@ -93,13 +92,21 @@ function User(props) {
           </div>
         </When>
         <Switch>
-          <Case condition={location.pathname === `/profile/${loginContext?.user?.user?.id}`}>
+          <Case
+            condition={
+              location.pathname === `/profile/${loginContext?.user?.user?.id}`
+            }
+          >
             <Button>Edit Profile</Button>
           </Case>
-          <Case condition={location.pathname === `/profile/${props.profile?.UserId}`}>
+          <Case
+            condition={
+              location.pathname === `/profile/${props.profile?.UserId}`
+            }
+          >
             <div>
               <When condition={!friends.includes(props.profile)}>
-                <Button onClick={() => addFriend()}>
+                <Button onClick={() => addFriend(props.profile.UserId)}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -118,7 +125,7 @@ function User(props) {
                   Add Friend
                 </Button>
               </When>
-              <Button onClick={() => blockFriend()}>
+              <Button onClick={() => blockFriend(props.profile.UserId)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -135,13 +142,17 @@ function User(props) {
             </div>
           </Case>
           <Case condition={location.pathname === "/search"}>
-            <Link to={`/profile/${props.profile ? props.profile.UserId : ' '}`}>
+            <Link to={`/profile/${props.profile ? props.profile.UserId : " "}`}>
               <Button>Profile</Button>
             </Link>
           </Case>
           <Case condition={location.pathname === "/friendRequests"}>
-            <Button onClick={acceptRequest}>Accept</Button>
-            <Button onClick={rejectRequest}>Reject</Button>
+            <Button onClick={() => acceptRequest(props.profile.UserId)}>
+              Accept
+            </Button>
+            <Button onClick={() => rejectRequest(props.profile.UserId)}>
+              Reject
+            </Button>
           </Case>
           <Default>
             <div>
