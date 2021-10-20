@@ -13,7 +13,7 @@ function Profile() {
     <Container className="profile" fluid>
       <Row>
         <Col xs={12} lg={4}>
-          <User placeholder="myProfile" />
+          <User placeholder="profile" />
         </Col>
         <Col className="about" xs={12} lg={8}>
           <article>

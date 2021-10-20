@@ -26,10 +26,9 @@ function Search() {
   }, []);
 
   return (
-    <>
-      <Form onSubmit={(e) => searchUsers(e)}>
-        <Form.Group className="mb-3" controlId="searchUsers">
-          <Form.Label>Search by Name</Form.Label>
+    <section>
+      <Form className="searchFrom" onSubmit={(e) => searchUsers(e)}>
+        <Form.Group className="mb-3 searchUsers" controlId="searchUsers">
           <Form.Control type="text" placeholder="Who are you looking for?" />
         </Form.Group>
       </Form>
@@ -37,12 +36,12 @@ function Search() {
         <Row>
           {cols.map((col) => (
             <Col lg="4" xs="12" md="6">
-              <User placeholder="profile" />
+              <User placeholder="search" />
             </Col>
           ))}
         </Row>
       </Container>
-    </>
+    </section>
   );
 }
 
