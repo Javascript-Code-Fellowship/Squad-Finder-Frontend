@@ -1,17 +1,19 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import "./styles/app.scss";
+import './styles/app.scss';
 
-import Header from "./components/Header";
-import Home from "./containers/Home";
-import Search from "./containers/Search";
-import Profile from "./containers/Profile";
-import Squad from "./containers/Squad";
-import Footer from "./components/Footer";
 
-import LoginContext from "./context/LoginContext";
+import Header from './components/Header';
+
+import Search from './containers/Search';
+import Profile from './containers/Profile';
+import ProfileCreate from './containers/ProfileCreate';
+import Squad from './containers/Squad';
+import Footer from './components/Footer';
+import LoginContext from './context/LoginContext';
+import Header from './components/Header';
+import SquadsContext from './context/SquadsContext';
 import FriendRequests from "./components/FriendRequests";
-import SquadsContext from "./context/SquadsContext";
 
 function App() {
   return (
@@ -21,6 +23,9 @@ function App() {
           <Router>
             <Header />
             <Switch>
+              <Route path="/profileCreate" exact>
+                <ProfileCreate />
+              </Route>
               <Route path="/profile" exact>
                 <Profile />
               </Route>

@@ -1,0 +1,42 @@
+@import './vars.scss';
+
+.profile-create {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .form-control {
+      width: 800px;
+      margin-bottom: $gutterMedium;
+    }
+
+    div:first-child {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .btn {
+    width: 30%;
+  }
+}
+
+.profile-games {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    padding: $gutterSmall;
+    width: 15%;
+  }
+  img:hover {
+    cursor: pointer;
+  }
+}
