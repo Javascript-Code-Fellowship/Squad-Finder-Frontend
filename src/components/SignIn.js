@@ -19,7 +19,9 @@ function SignIn() {
     e.preventDefault();
     showSignUpFields ? loginContext.signIn(e) : loginContext.signUp(e);
     handleToggle();
-    history.push('/profileCreate');
+    if (!loginContext.isLoggedIn) {
+      history.push('/profileCreate');
+    }
   };
 
   return (
