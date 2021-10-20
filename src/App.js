@@ -10,8 +10,8 @@ import Squad from "./containers/Squad";
 import Footer from "./components/Footer";
 
 import LoginContext from "./context/LoginContext";
+import FriendRequests from "./components/FriendRequests";
 import SquadsContext from "./context/SquadsContext";
-
 
 function App() {
   return (
@@ -30,7 +30,10 @@ function App() {
               <Route path="/squad/:name" exact>
                 <Squad />
               </Route>
-              <Route path="/">
+              <Route path="/friendRequests" exact>
+                <FriendRequests />
+              </Route>
+              <Route path="/" exact>
                 <Home />
               </Route>
             </Switch>

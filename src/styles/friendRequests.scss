@@ -1,0 +1,11 @@
+@import "./vars.scss";
+
+.friendRequests {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .card {
+    width: 50%;
+  }
+}
