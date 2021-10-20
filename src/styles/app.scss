@@ -7,11 +7,14 @@ html,
   background-color: $darkGrey;
   color: $white;
 }
-@import './user.scss';
-@import './profile.scss';
-@import './friends.scss';
-@import './loginModal.scss';
-@import './search.scss';
+
+@import "./user.scss";
+@import "./profile.scss";
+@import "./friends.scss";
+@import "./loginModal.scss";
+@import "./search.scss";
+@import "./friendRequests.scss";
+
 $theme-colors: (
   'primary': #0270f2,
   'secondary': #ff0086,
