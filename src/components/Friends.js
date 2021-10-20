@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { When } from "react-if";
 import { Link } from "react-router-dom";
-import { Card, Image, Button } from "react-bootstrap";
+import { Card, Image } from "react-bootstrap";
+
+import { LoginContext } from "../context/LoginContext";
 
 import david from "../assets/David.png";
 import gina from "../assets/Gina.png";
@@ -15,22 +18,24 @@ const dummyFriends = [
   { username: "David", userImage: david },
   { username: "Gina", userImage: gina },
   { username: "Gina", userImage: gina },
-  { username: "Gina", userImage: gina },
 ];
 
 function Friends() {
-  return (
-    <Card className="friends" fluid>
-      <Card.Title>
-        <Link to="/friendRequests">Friends</Link>
-      </Card.Title>
+  const loginContext = useContext(LoginContext);
 
-      <div className="friends-list">
-        {dummyFriends.map((friend) => (
-          <Image src={friend.userImage} roundedCircle />
-        ))}
-      </div>
-    </Card>
+  return (
+    <When condition={loginContext.isLoggedIn}>
+      <Card className="friends" fluid>
+        <Card.Title>
+          <Link to="/friendRequests">Friends</Link>
+        </Card.Title>
+        <div className="friends-list">
+          {dummyFriends.map((friend) => (
+            <Image src={friend.userImage} roundedCircle />
+          ))}
+        </div>
+      </Card>
+    </When>
   );
 }
 

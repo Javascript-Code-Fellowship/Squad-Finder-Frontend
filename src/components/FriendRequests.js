@@ -3,8 +3,8 @@ import { Col, Container, Row } from "react-bootstrap";
 import User from "./User";
 import axios from "axios";
 import { LoginContext } from "../context/LoginContext";
+import Friends from "./Friends";
 
-const friends = [1, 2, 3, 4];
 const requests = ["a", "b", "c", "d"];
 
 function FriendRequests() {
@@ -32,17 +32,22 @@ function FriendRequests() {
   }
   return (
     <div>
-      <Container>
+      <Container fluid>
         <Row>
-          {requests.map((item) => (
-            <Col lg="4" xs="12" md="6">
-              <User
-                placeholder="request"
-                acceptRequest={acceptRequest}
-                rejectRequest={rejectRequest}
-              />
-            </Col>
-          ))}
+          <Col xs="6" lg="4">
+            <Friends />
+          </Col>
+          <Col lg="8" xs="6" className="friendRequests">
+            <div className="requests">
+              {requests.map((item) => (
+                <User
+                  placeholder="request"
+                  acceptRequest={acceptRequest}
+                  rejectRequest={rejectRequest}
+                />
+              ))}
+            </div>
+          </Col>
         </Row>
       </Container>
     </div>
