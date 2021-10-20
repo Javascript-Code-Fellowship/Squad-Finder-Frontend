@@ -1,6 +1,7 @@
 @import './header.scss';
 @import 'profileCreate.scss';
 @import './user.scss';
+@import './createSquad.scss';
 
 html,
 #root {
@@ -8,12 +9,12 @@ html,
   color: $white;
 }
 
-@import "./user.scss";
-@import "./profile.scss";
-@import "./friends.scss";
-@import "./loginModal.scss";
-@import "./search.scss";
-@import "./friendRequests.scss";
+@import './user.scss';
+@import './profile.scss';
+@import './friends.scss';
+@import './loginModal.scss';
+@import './search.scss';
+@import './friendRequests.scss';
 
 $theme-colors: (
   'primary': #0270f2,

@@ -39,6 +39,7 @@ function ProfileCreate() {
           control={control}
           errors={errors}
           name="bio"
+          as="textarea"
         />
         <h4>Favorite Game</h4>
         <div className="profile-games">
