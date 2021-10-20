@@ -21,10 +21,12 @@ function Header() {
           <div className="header-bottom-1">
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse className="header-bottom">
-              <Link to="/">Home</Link>
-              <Link to="/squad">Squads</Link>
-              <Link to="/search">Find Friends</Link>
-              <Link to={loginContext.isLoggedIn ? `/profile/${loginContext.user.user.id}` : `/profile`}>Profile</Link>
+
+              <Link to="/">HOME</Link>
+              <Link to="/">SQUADS</Link>
+              <Link to="/search">FIND FRIENDS</Link>
+              <Link to="/profile">PROFILE</Link>
+
             </Navbar.Collapse>
           </div>
         </div>

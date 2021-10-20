@@ -11,15 +11,23 @@
   background-color: $lightGrey;
   display: flex;
   justify-content: space-between;
-  padding: 1.5%;
+  padding: 2% 4.5% 1.9% 3.5%;
   align-items: center;
     img {
       width: 25%;
     }
+    button {
+      padding: 10px 25px;
+      background-color: $green;
+      border:none;
+    }
+    button:hover {
+      color: $white;
+    }
 }
 
 .header-bottom {
-  padding: 0.5%;
+  padding: 0.5% 6%;
   display: flex;
   justify-content: space-around;
   background: linear-gradient(to left, $purple, $blue);
@@ -29,8 +37,14 @@
     text-decoration: none;
   }
   a:hover {
-    color: $green;
+    color: $white;
+    transform: scale(1.2);
   }
+}
+
+.navbar {
+  padding-top: 0rem !important;
+  
 }
 
 @media (max-width: 768px) {
@@ -41,3 +55,4 @@
     background: none;
   }
 }
+
