@@ -14,25 +14,29 @@ function Feed() {
 
   return (
     <>
-
-      <Iframe url="https://www.feedspot.com/widgets/lookup/e0667addcurB"
-      id="hero"
-      frameborder="0"
-      width="100%"
-      height="100%"
-      scrolling="no"
+      <div className="hero" >
+        <Iframe url="https://www.feedspot.com/widgets/lookup/e0667addcurB"
+        id="hero"
+        frameborder="0"
+        width="100%"
+        height="100%"
+        scrolling="no"
         />
-     <div>
-       <Button onClick={toggleLayout}>{gridLayout ? 'SHOW AS LIST' : 'SHOW AS GRID'}</Button>
-     </div> 
+      </div>
 
-      <Iframe url={gridLayout ? grid : list}
-      id="articles"
-      frameborder="0"
-      width="100%"
-      height="100%"
-      scrolling="no"
-        />
+      <div>
+        <div>
+          <Button onClick={toggleLayout}>{gridLayout ? 'SHOW AS LIST' : 'SHOW AS GRID'}</Button>
+        </div> 
+
+        <Iframe url={gridLayout ? grid : list}
+        id="articles"
+        frameborder="0"
+        width="100%"
+        height="100%"
+        scrolling="no"
+          />
+      </div>
      
     </>
   );
