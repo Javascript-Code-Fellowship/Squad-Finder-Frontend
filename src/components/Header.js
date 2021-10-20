@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import SignIn from "./SignIn";
 import logo from "../assets/sf-logo2.png";
 
+import { LoginContext } from "../context/LoginContext";
+
 function Header() {
+
+  const loginContext = useContext(LoginContext);
+
   return (
     <>
       <Navbar expand="md">
@@ -19,7 +24,7 @@ function Header() {
               <Link to="/">Home</Link>
               <Link to="/squad">Squads</Link>
               <Link to="/search">Find Friends</Link>
-              <Link to="/profile">Profile</Link>
+              <Link to={loginContext.isLoggedIn ? `/profile/${loginContext.user.user.id}` : `/profile`}>Profile</Link>
             </Navbar.Collapse>
           </div>
         </div>

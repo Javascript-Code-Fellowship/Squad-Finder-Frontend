@@ -28,6 +28,9 @@ function App() {
               <Route path="/profile" exact>
                 <Profile />
               </Route>
+              <Route path="/profile/:id">
+                <Profile />
+              </Route>
               <Route path="/search" exact>
                 <Search />
               </Route>
