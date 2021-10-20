@@ -26,9 +26,7 @@ function ProfileCreate() {
     defaultValues: { bio: '', game: '' },
   });
 
-  async function onSubmit(data) {
-    console.log(data);
-  }
+  async function onSubmit(data) {}
 
   return (
     <div className="profile-create">

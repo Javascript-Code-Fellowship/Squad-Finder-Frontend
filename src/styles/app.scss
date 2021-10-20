@@ -2,19 +2,13 @@
 @import 'profileCreate.scss';
 @import './user.scss';
 @import './createSquad.scss';
-
-html,
-#root {
-  background-color: $darkGrey;
-  color: $white;
-}
-
 @import './user.scss';
 @import './profile.scss';
 @import './friends.scss';
 @import './loginModal.scss';
 @import './search.scss';
 @import './friendRequests.scss';
+@import './squadPage.scss';
 
 $theme-colors: (
   'primary': #0270f2,
@@ -25,5 +19,11 @@ $theme-colors: (
   'light-bg': #232627,
   'white': #f5f5f5,
 );
+
+html,
+#root {
+  background-color: $darkGrey;
+  color: $white;
+}
 
 @import '~bootstrap/scss/bootstrap';

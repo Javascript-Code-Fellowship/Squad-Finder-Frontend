@@ -30,7 +30,8 @@ function Login(props) {
     let results = await axios(config);
     setUser(results.data);
     setIsLoggedIn(true);
-    console.log('sign in', results.data);
+    console.log("sign in", results.data);
+    // cookie.save("auth", results.data.token);
   }
 
   async function signUp(e) {
@@ -47,7 +48,7 @@ function Login(props) {
     );
     setUser(results.data);
     setIsLoggedIn(true);
-    console.log('sign up', results.data);
+    console.log("sign up", results.data);
   }
 
   const context = {
@@ -59,7 +60,7 @@ function Login(props) {
     logout,
     setShow,
     signIn,
-    signUp
+    signUp,
   };
 
   return (
