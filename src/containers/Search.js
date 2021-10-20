@@ -10,10 +10,10 @@ function Search() {
   const [users, setUsers] = useState([]);
   const [friendSearch, setFriendSearch] = useState([]);
 
-  // async function getUsers() {
-  //   let results = await axios.get(`https://squadfinderapp.herokuapp.com/users`);
-  //   return results.data;
-  // }
+  async function getUsers() {
+    let results = await axios.get(`https://squadfinderapp.herokuapp.com/users`);
+    setUsers(results.data);
+  }
 
   function searchUsers(e) {
     e.preventDefault();
@@ -22,7 +22,7 @@ function Search() {
   }
 
   useEffect(() => {
-    setUsers();
+    getUsers();
   }, []);
 
   return (
@@ -34,9 +34,9 @@ function Search() {
       </Form>
       <Container>
         <Row>
-          {cols.map((col) => (
+          {users.map((col) => (
             <Col lg="4" xs="12" md="6">
-              <User placeholder="search" />
+              <User profile={col} />
             </Col>
           ))}
         </Row>

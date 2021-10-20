@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState } from "react";
 import { Case, Default, Switch, When } from "react-if";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Button, Card } from "react-bootstrap";
 import axios from "axios";
 
@@ -8,9 +8,12 @@ import ProfilePhoto from "../assets/Jess.png";
 import { LoginContext } from "../context/LoginContext";
 
 let online = true;
+let id = 1;
 
 function User(props) {
+
   const loginContext = useContext(LoginContext);
+  const location = useLocation();
 
   const [profile, setProfile] = useState(null);
 
@@ -33,6 +36,28 @@ function User(props) {
     // await axios(config);
   }
 
+  //still needs to hide or remove the request. Probably could be solved with integration with the API and triggering a refresh of the DB pull or requests as the API does remove the request.
+  //will probably have to make these function async
+  function acceptRequest(id) {
+    // const config = {
+    //   method: "post",
+    //   url: `https://squadfinderapp.herokuapp.com/friends/${id}`,
+    //   headers: { authorization: `Bearer ${LoginContext.user.token}` },
+    // };
+    // axios(config);
+    console.log("accept");
+  }
+
+  function rejectRequest(id) {
+    // const config = {
+    //   method: "reject",
+    //   url: `https://squadfinderapp.herokuapp.com/friendRequests/${id}`,
+    //   headers: { authorization: `Bearer ${LoginContext.user.token}` },
+    // };
+    // axios(config);
+    console.log("reject");
+  }
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   async function viewProfile() {
     if (loginContext.isLoggedIn) {
@@ -50,6 +75,7 @@ function User(props) {
 
   useEffect(() => {
     viewProfile();
+    console.log("card location: ", location.pathname);
   }, [loginContext.isLoggedIn]);
 
   return (
@@ -66,10 +92,10 @@ function User(props) {
           </div>
         </When>
         <Switch>
-          <Case condition={props.placeholder === "myProfile"}>
+          <Case condition={location.pathname === "/profile"}>
             <Button>Edit Profile</Button>
           </Case>
-          <Case condition={props.placeholder === "profile"}>
+          <Case condition={location.pathname === `/profile/${id}`}>
             <div>
               <Button onClick={() => addFriend()}>
                 <svg
@@ -105,14 +131,14 @@ function User(props) {
               </Button>
             </div>
           </Case>
-          <Case condition={props.placeholder === "search"}>
+          <Case condition={location.pathname === "/search"}>
             <Link to="/profile">
-              <Button>See Profile</Button>
+              <Button>Profile</Button>
             </Link>
           </Case>
-          <Case condition={props.placeholder === "request"}>
-            <Button onClick={props.acceptRequest}>Accept</Button>
-            <Button onClick={props.rejectRequest}>Reject</Button>
+          <Case condition={location.pathname === "/friendRequests"}>
+            <Button onClick={acceptRequest}>Accept</Button>
+            <Button onClick={rejectRequest}>Reject</Button>
           </Case>
           <Default>
             <div>
