@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './styles/app.scss';
 
+
 import Header from './components/Header';
 
 import Search from './containers/Search';
@@ -12,6 +13,7 @@ import Footer from './components/Footer';
 import LoginContext from './context/LoginContext';
 import Header from './components/Header';
 import SquadsContext from './context/SquadsContext';
+import FriendRequests from "./components/FriendRequests";
 
 function App() {
   return (
@@ -33,7 +35,10 @@ function App() {
               <Route path="/squad/:name" exact>
                 <Squad />
               </Route>
-              <Route path="/">
+              <Route path="/friendRequests" exact>
+                <FriendRequests />
+              </Route>
+              <Route path="/" exact>
                 <Home />
               </Route>
             </Switch>
