@@ -16,6 +16,7 @@ function User(props) {
   const { id } = useParams();
 
   const [friends, setFriends] = useState([]);
+  const [pendingRequests, setPendingRequests] = useState([]);
 
   async function addFriend() {
     console.log("added");
