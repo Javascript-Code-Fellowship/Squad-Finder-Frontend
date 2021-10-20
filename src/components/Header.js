@@ -25,7 +25,7 @@ function Header() {
               <Link to="/">HOME</Link>
               <Link to="/">SQUADS</Link>
               <Link to="/search">FIND FRIENDS</Link>
-              <Link to="/profile">PROFILE</Link>
+              <Link to={loginContext.isLoggedIn ? `/profile/${loginContext.user.user.id}` : `/profile`}>PROFILE</Link>
 
             </Navbar.Collapse>
           </div>
