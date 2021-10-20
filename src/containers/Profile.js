@@ -1,12 +1,12 @@
-import React from "react";
-import { Col, Container, Image, Row } from "react-bootstrap";
+import React from 'react';
+import { Col, Container, Image, Row } from 'react-bootstrap';
 
-import User from "../components/User";
+import User from '../components/User';
 
-import squadImg from "../assets/potato.jpg";
-import Apex from "../assets/apex.jpg";
-import Fortnite from "../assets/fortnite.jpg";
-import Mario from "../assets/mario.jpg";
+import squadImg from '../assets/potato.jpg';
+import Apex from '../assets/apex.jpg';
+import Fortnite from '../assets/Fortnite.jpg';
+import Mario from '../assets/mario.jpg';
 
 function Profile() {
   return (
@@ -25,7 +25,7 @@ function Profile() {
               odio in tincidunt. Aliquam sit amet euismod magna. Ut ut tincidunt
               magna, sit amet tristique odio. Duis tempor, est quis ultricies
               cursus, ex lorem dignissim quam, vitae viverra tortor magna vitae
-              lectus. Sed sit amet sollicitudin magna, vel dignissim ante.{" "}
+              lectus. Sed sit amet sollicitudin magna, vel dignissim ante.{' '}
             </p>
           </article>
           <article className="squads-carosel">

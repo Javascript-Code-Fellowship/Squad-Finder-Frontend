@@ -10,7 +10,6 @@ import ProfileCreate from './containers/ProfileCreate';
 import Squad from './containers/Squad';
 import Footer from './components/Footer';
 import LoginContext from './context/LoginContext';
-import SignIn from './components/SignIn';
 
 function App() {
   return (
