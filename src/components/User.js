@@ -50,12 +50,12 @@ function User(props) {
 
   useEffect(() => {
     viewProfile();
-  }, [loginContext.isLoggedIn, viewProfile])
+  }, [loginContext.isLoggedIn])
 
   return (
     <When condition={loginContext.isLoggedIn}>
       <Card className="user" fluid>
-        <Card.Title>@USERNAME</Card.Title>
+        <Card.Title>@{props.profile ? props.profile.username.toUpperCase() : ''}</Card.Title>
         <Card.Img variant="bottom" src={ProfilePhoto} roundedCircle />
         <When condition={online}>
           <div className="online">

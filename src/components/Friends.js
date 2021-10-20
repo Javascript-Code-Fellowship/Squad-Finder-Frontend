@@ -18,7 +18,6 @@ const dummyFriends = [
   { username: 'David', userImage: david },
   { username: 'Gina', userImage: gina },
   { username: 'Gina', userImage: gina },
-  { username: 'Gina', userImage: gina },
 ];
 
 function Friends() {

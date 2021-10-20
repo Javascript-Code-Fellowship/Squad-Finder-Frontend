@@ -13,6 +13,11 @@
       h2 {
         font-family: $fontLarge;
       }
+
+      article {
+        min-height: 33%;
+        margin-bottom: $gutterMedium;
+      }
     
       .games {
         display: flex;
