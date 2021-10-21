@@ -28,7 +28,6 @@ function Friends() {
         headers: { authorization: `Bearer ${loginContext.user.token}` },
       };
       let results = await axios(config);
-      console.log("@@@@@", results.data);
       setFriends(results.data);
     }
     getFriends();
