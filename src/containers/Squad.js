@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Button, Accordion } from "react-bootstrap";
 import axios from "axios";
-
+import Member from "../components/Member";
 import { LoginContext } from "../context/LoginContext";
 
 const dummySquads = [
@@ -27,7 +27,7 @@ function Squad() {
       setSquads(results.data);
     }
     getSquads();
-  }, []);
+  }, [loginContext.user.token]);
 
   return (
     <div className="squadPage">
@@ -39,8 +39,8 @@ function Squad() {
           <Accordion.Item eventKey={idx}>
             <Accordion.Header>{squad.name}</Accordion.Header>
             <Accordion.Body>
-              {squad.members.map((member) => (
-                <p>{member} </p>
+              {squad.members.map((member, idx) => (
+                <Member name={member.name} profilePhoto={idx} />
               ))}
             </Accordion.Body>
           </Accordion.Item>
