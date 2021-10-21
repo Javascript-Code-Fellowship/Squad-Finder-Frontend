@@ -50,7 +50,6 @@ function User(props) {
     };
     await axios(config);
     props.getRequests();
-    console.log("friends list: ", friends);
   }
 
   async function rejectRequest(id) {
@@ -63,19 +62,21 @@ function User(props) {
     props.getRequests();
   }
 
-  // async function getFriends() {
-  //   if (loginContext.isLoggedIn) {
-  //     const config = {
-  //       method: "get",
-  //       url: `https://squadfinderapp.herokuapp.com/friends`,
-  //       headers: { authorization: `Bearer ${loginContext.user.token}` },
-  //     };
+   async function getFriends() {
+     if (loginContext.isLoggedIn) {
+       const config = {
+         method: "get",
+         url: `https://squadfinderapp.herokuapp.com/friends`,
+         headers: { authorization: `Bearer ${loginContext.user.token}` },
+       };
+       let response = await axios(config);
+       setFriends(response.data);
+       
+     }
+   }
 
-  //     let response = await axios(config);
-  //     setFriends(response.data);
-  //     console.log("Friends response: ", response.data);
-  //   }
-  // }
+
+
 
   // useEffect(() => {
   //   getFriends();
