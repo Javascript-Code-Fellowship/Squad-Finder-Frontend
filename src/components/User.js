@@ -101,7 +101,7 @@ function User(props) {
               location.pathname === `/profile/${loginContext?.user?.user?.id}`
             }
           >
-            <Button>Edit Profile</Button>
+            <Button className="editProfile">EDIT PROFILE</Button>
           </Case>
           <Case
             condition={
@@ -132,7 +132,7 @@ function User(props) {
                       />
                       <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
                     </svg>
-                    Remove Friend
+                    REMOVE FRIEND
                   </Button>
                 </Then>
                 <Else>
@@ -152,7 +152,7 @@ function User(props) {
                       />
                       <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
                     </svg>
-                    Add Friend
+                    ADD FRIEND
                   </Button>
                 </Else>
               </If>
@@ -168,7 +168,7 @@ function User(props) {
                   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                   <path d="M11.354 4.646a.5.5 0 0 0-.708 0l-6 6a.5.5 0 0 0 .708.708l6-6a.5.5 0 0 0 0-.708z" />
                 </svg>
-                Block User
+                BLOCK USER
               </Button>
             </div>
           </Case>
@@ -179,21 +179,21 @@ function User(props) {
             }
           >
             <Link to={`/profile/${props.profile ? props.profile.UserId : " "}`}>
-              <Button>Profile</Button>
+              <Button id="profilebtn">PROFILE</Button>
             </Link>
           </Case>
           <Case condition={location.pathname === "/friendRequests"}>
             <Button onClick={() => acceptRequest(props.profile.UserId)}>
-              Accept
+              ACCEPT
             </Button>
             <Button onClick={() => rejectRequest(props.profile.UserId)}>
-              Reject
+              REJECT
             </Button>
           </Case>
           <Default>
-            <div>
-              <Button>My Squads</Button>
-              <Button>My Games</Button>
+            <div className="homeUserButtons">
+              <Button className="mySquads">MY SQUADS</Button>
+              <Button>MY GAMES</Button>
             </div>
           </Default>
         </Switch>

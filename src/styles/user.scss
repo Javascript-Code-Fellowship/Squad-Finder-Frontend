@@ -44,6 +44,12 @@
     }
   }
 
+  
+  svg {
+    margin: $gutterSmall;
+    flex-grow: 1;
+  }
+  
   button {
     margin-right: 30%;
     margin-top: 2vh;
@@ -51,18 +57,27 @@
     padding: .75rem 2.5rem;
     width: 70%;
     color: $white;
-    
-
-    svg {
-      margin: $gutterSmall;
-      flex-grow: 1;
-    }
   }
 
   button:nth-child(odd) {
     background-color: $pink;
     border-color: $pink;
-    margin-top: 0;
+    margin: 0;
+    width: 100%;
   }
+
+ .homeUserButtons {
+   button {
+    margin-right: 30%;
+    margin-top: 2vh;
+    margin-left: 13.5%;
+    padding: .75rem 2.5rem;
+    width: 70%;
+    color: $white;
+   }
+ } 
+ 
 }
+
+
 

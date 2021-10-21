@@ -3,9 +3,11 @@ import { Container, Row, Col } from "react-bootstrap";
 import { When } from "react-if";
 import { LoginContext } from "../context/LoginContext";
 
-import User from "../components/User";
-import Feed from "../components/Feed";
-import Friends from "../components/Friends";
+
+import User from '../components/User';
+import Hero from '../components/Hero';
+import Friends from '../components/Friends';
+import Articles from '../components/Articles';
 
 function Home() {
   const loginContext = useContext(LoginContext);
@@ -14,14 +16,15 @@ function Home() {
     <div>
       <Container fluid>
         <Row>
-          <When condition={loginContext.isLoggedIn}>
-            <Col xs={12} lg={4}>
-              <User profile={loginContext.user.user} />
-              <Friends />
-            </Col>
-          </When>
-          <Col xs={12} lg={loginContext.isLoggedIn ? 8 : 12}>
-            <Feed />
+
+          <Col xs={12} lg={4}>
+            <User profile={loginContext.user.user}/>
+            <Friends />
+          </Col>
+          <Col xs={12} lg={8}>
+            <Hero />
+            <Articles />
+
           </Col>
         </Row>
       </Container>
