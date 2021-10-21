@@ -39,7 +39,8 @@ function ProfileCreate() {
 
     let response = await axios(config);
     console.log(response);
-    history.push('/profile');
+    console.log(loginContext);
+    history.push(`/profile/${loginContext.user.user.id}`);
   }
 
   return (
