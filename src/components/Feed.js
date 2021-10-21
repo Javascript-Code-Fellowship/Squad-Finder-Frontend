@@ -14,7 +14,6 @@ function Feed() {
 
   return (
     <>
-      <div className="hero" >
         <Iframe url="https://www.feedspot.com/widgets/lookup/e0667addcurB"
         id="hero"
         frameborder="0"
@@ -22,9 +21,7 @@ function Feed() {
         height="100%"
         scrolling="no"
         />
-      </div>
 
-      <div>
         <div>
           <Button onClick={toggleLayout}>{gridLayout ? 'SHOW AS LIST' : 'SHOW AS GRID'}</Button>
         </div> 
@@ -35,9 +32,7 @@ function Feed() {
         width="100%"
         height="100%"
         scrolling="no"
-          />
-      </div>
-     
+          />     
     </>
   );
 }
