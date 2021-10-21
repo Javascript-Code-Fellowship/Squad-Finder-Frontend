@@ -110,8 +110,6 @@ function User(props) {
           >
             <div>
               <If condition={friends.filter(profile => profile.UserId === parseInt(id)).length > 0}>
-                {console.log("condition for friend: ", props.profile)}
-                {console.log("condition eval: ", friends.filter(profile => profile.UserId === id).length > 0)}
                 <Then>
                 <Button onClick={() => removeFriend(props.profile.UserId)}>
                     <svg
