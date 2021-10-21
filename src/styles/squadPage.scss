@@ -1,0 +1,35 @@
+@import "./vars.scss";
+
+.squadPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: $gutterLarge * 3.3;
+  margin-right: $gutterLarge;
+  margin-top: $gutterLarge;
+  color: $white;
+
+  button {
+    margin-bottom: 2vh;
+    color: $white;
+    
+  }
+
+  .accordion-button:not(.collapsed) {
+    color: $white;
+  }
+  .accordion-item {
+    background-color: $lightGrey;
+    width: 90%;
+    margin: 0rem;
+    button {
+      background-color: $purple;
+    }
+  }
+
+  .accordion-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

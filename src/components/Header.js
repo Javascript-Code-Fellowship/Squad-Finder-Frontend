@@ -1,21 +1,32 @@
-import React from 'react';
-import { Navbar, Nav, Button } from 'react-bootstrap';
+import React, { useContext } from "react";
+import { Navbar } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import SignIn from "./SignIn";
+import logo from "../assets/sf-logo2.png";
+
+import { LoginContext } from "../context/LoginContext";
 
 function Header() {
+
+  const loginContext = useContext(LoginContext);
+
   return (
     <>
       <Navbar expand="md">
         <div className="header-main">
           <div className="header-top">
-            <h1>SquadFinder</h1>
-            <Button variant="primary">Login</Button>
+            <img src={logo} alt="site logo" />
+            <SignIn />
           </div>
           <div className="header-bottom-1">
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse className="header-bottom">
-              <Button variant="outline-white">Home</Button>
-              <Button variant="outline-white">Squads</Button>
-              <Button variant="outline-white">Account</Button>
+
+              <Link to="/">HOME</Link>
+              <Link to="/squad">SQUADS</Link>
+              <Link to="/search">FIND FRIENDS</Link>
+              <Link to={loginContext.isLoggedIn ? `/profile/${loginContext.user.user.id}` : `/profile`}>PROFILE</Link>
+
             </Navbar.Collapse>
           </div>
         </div>

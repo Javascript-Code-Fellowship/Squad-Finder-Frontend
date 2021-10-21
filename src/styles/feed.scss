@@ -1,0 +1,26 @@
+iframe:nth-child(1) {
+margin-top: 2.25vh;
+height: 425px;
+  }
+
+iframe:nth-child(2) {
+  margin-top: 2.25vh;
+  margin-bottom: 5vh;
+  height: 100%;
+    }
+
+.feedLayout {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 0vw 1.75vw;
+  
+  button {
+    background-color: $purple;
+    color: $white;
+    border: none;
+  }
+  
+}
+
+

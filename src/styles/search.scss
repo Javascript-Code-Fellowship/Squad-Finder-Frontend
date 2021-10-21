@@ -1,0 +1,12 @@
+@import "./vars.scss";
+
+section {
+  form {
+    display: flex;
+    justify-content: center;
+
+    .searchUsers {
+      width: 50%;
+    }
+  }
+}

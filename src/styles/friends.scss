@@ -1,0 +1,27 @@
+.friends.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $lightGrey;
+  padding: $gutterMedium;
+  color: $white;
+  margin: $gutterSmall;
+  img {
+    width: 25%;
+    height: auto;
+    margin: $gutterSmall;
+  }
+}
+
+.friends-list {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+section .searchFrom {
+  margin-top: 6vh;
+}

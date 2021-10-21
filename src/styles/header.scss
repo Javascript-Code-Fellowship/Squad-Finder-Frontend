@@ -1,4 +1,4 @@
-@import './vars.scss';
+@import "./vars.scss";
 
 .header-main {
   width: 100vw;
@@ -11,14 +11,40 @@
   background-color: $lightGrey;
   display: flex;
   justify-content: space-between;
-  padding: 1.5%;
+  padding: 2% 4.5% 1.9% 3.5%;
   align-items: center;
+    img {
+      width: 25%;
+    }
+    button {
+      padding: 10px 25px;
+      background-color: $green;
+      border:none;
+    }
+    button:hover {
+      color: $white;
+    }
 }
 
 .header-bottom {
+  padding: 0.5% 6%;
   display: flex;
   justify-content: space-around;
   background: linear-gradient(to left, $purple, $blue);
+
+  a {
+    color: $white;
+    text-decoration: none;
+  }
+  a:hover {
+    color: $white;
+    transform: scale(1.2);
+  }
+}
+
+.navbar {
+  padding-top: 0rem !important;
+  
 }
 
 @media (max-width: 768px) {
@@ -27,10 +53,6 @@
     flex-direction: column;
     align-items: flex-start !important;
     background: none;
-
-    .btn {
-      margin: 1.5%;
-      background-color: $blue;
-    }
   }
 }
+
