@@ -50,7 +50,6 @@ function User(props) {
     };
     await axios(config);
     props.getRequests();
-    console.log("friends list: ", friends);
   }
 
   async function rejectRequest(id) {
@@ -73,7 +72,6 @@ function User(props) {
 
       let response = await axios(config);
       setFriends(response.data);
-      console.log("Friends response: ", response.data);
     }
   }
 

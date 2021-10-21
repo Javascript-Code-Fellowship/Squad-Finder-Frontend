@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import { Case, Switch, When } from "react-if";
+import { If, Then, When } from "react-if";
 import { Col, Container, Image, Row } from "react-bootstrap";
 
 import User from "../components/User";
@@ -21,6 +21,7 @@ function Profile(props) {
   const { id } = useParams();
 
   const [profile, setProfile] = useState(null);
+  const [squads, setSquads] = useState([]);
 
   async function viewProfile() {
     if (loginContext.isLoggedIn) {
@@ -35,8 +36,22 @@ function Profile(props) {
     }
   }
 
+  async function viewSquads() {
+    if (loginContext.isLoggedIn) {
+      const config = {
+        method: "get",
+        url: `https://squadfinderapp.herokuapp.com/squads`,
+        headers: { authorization: `Bearer ${loginContext.user.token}` },
+      };
+
+      let response = await axios(config);
+      setSquads(response.data);
+    }
+  }
+
   useEffect(() => {
     viewProfile();
+    viewSquads();
   }, [id]);
 
   //the second when condition isn't working yet because the profile isn't being saved to the API
@@ -56,7 +71,13 @@ function Profile(props) {
             </article>
             <article className="squads-carosel">
               <h2>MY SQUADS</h2>
-              <Image src={squadImg} roundedCircle fluid />
+              <If condition={squads?.squads?.length > 0}>
+                <Then>
+                  {squads.squads?.map((squad) => (
+                    <Image src={squadImg} roundedCircle fluid />
+                  ))}
+                </Then>
+              </If>
             </article>
             <article>
               <h2>MY FAVORITES</h2>
