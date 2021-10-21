@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import User from './User';
 import { useForm } from 'react-hook-form';
@@ -6,6 +6,9 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import ControlledInput from './ControlledInput';
 import SquadMember from './SquadMember';
+import { LoginContext } from '../context/LoginContext';
+import { useHistory } from 'react-router';
+import axios from 'axios';
 
 const friends = [
   { bio: 'about me', games: ['Madden'], username: 'Jaya' },
@@ -20,6 +23,8 @@ const schema = yup.object().shape({
 });
 
 function CreateSquad() {
+  const loginContext = useContext(LoginContext);
+  const history = useHistory();
   const {
     watch,
     control,
@@ -34,6 +39,16 @@ function CreateSquad() {
 
   async function onSubmit(data) {
     console.log(data);
+    const config = {
+      method: 'post',
+      url: `https://squadfinderapp.herokuapp.com/squads`,
+      headers: { authorization: `Bearer ${loginContext.user.token}` },
+      data: data,
+    };
+
+    let response = await axios(config);
+    console.log(response);
+    history.push('/squads');
   }
 
   return (
