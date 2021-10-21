@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Form, Button, Image } from 'react-bootstrap';
@@ -6,6 +6,8 @@ import * as yup from 'yup';
 import ControlledInput from '../components/ControlledInput';
 import axios from 'axios';
 import gamelist from '../assets/gamelist';
+import { LoginContext } from '../context/LoginContext';
+import { useHistory } from 'react-router';
 
 const schema = yup.object().shape({
   bio: yup.string().required('You need a bio'),
@@ -13,8 +15,8 @@ const schema = yup.object().shape({
 });
 
 function ProfileCreate() {
-  console.log(gamelist);
-
+  const loginContext = useContext(LoginContext);
+  const history = useHistory();
   const {
     control,
     setValue,
@@ -26,7 +28,19 @@ function ProfileCreate() {
     defaultValues: { bio: '', game: '' },
   });
 
-  async function onSubmit(data) {}
+  async function onSubmit(data) {
+    console.log(data);
+    const config = {
+      method: 'post',
+      url: `https://squadfinderapp.herokuapp.com/profile`,
+      headers: { authorization: `Bearer ${loginContext.user.token}` },
+      data: data,
+    };
+
+    let response = await axios(config);
+    console.log(response);
+    history.push('/profile');
+  }
 
   return (
     <div className="profile-create">
