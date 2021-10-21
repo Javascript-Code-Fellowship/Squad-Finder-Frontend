@@ -11,9 +11,7 @@ const dummySquads = [
 ];
 
 function Squad() {
-  const [squads, setSquads] = useState([
-    { name: "Squad Name", squadmates: ["David", "Jaya", "Jess"] },
-  ]);
+  const [squads, setSquads] = useState([]);
 
   const loginContext = useContext(LoginContext);
 
