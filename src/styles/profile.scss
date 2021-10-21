@@ -9,9 +9,11 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      margin-top: 2vh;
     
       h2 {
         font-family: $fontLarge;
+        margin-bottom: 6vh;
       }
 
       article {
@@ -24,15 +26,15 @@
     
         img {
           flex-shrink: 2;
-          width: 25%;
+          width: 20%;
           height: auto;
-          margin: $gutterSmall $gutterSmall $gutterSmall 0;
+          margin-right: $gutterMedium;
         }
       }
     
       .squads-carosel {
         img {
-          width: 20%;
+          width: 15%;
           height: auto;
           margin: $gutterSmall / 2
         }

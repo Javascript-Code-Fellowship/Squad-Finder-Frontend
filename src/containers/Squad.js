@@ -32,7 +32,7 @@ function Squad() {
   return (
     <div className="squadPage">
       <Link to="/createSquad">
-        <Button variant="green">Create Squad</Button>
+        <Button variant="green">CREATE SQUAD</Button>
       </Link>
       <Accordion>
         {dummySquads.map((squad, idx) => (
