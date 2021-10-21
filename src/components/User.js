@@ -30,7 +30,6 @@ function User(props) {
 
   async function removeFriend() {
     // STRETCH: Add ability to remove a friend
-
   }
 
   async function blockFriend(id) {
@@ -109,9 +108,14 @@ function User(props) {
             }
           >
             <div>
-              <If condition={friends.filter(profile => profile.UserId === parseInt(id)).length > 0}>
+              <If
+                condition={
+                  friends.filter((profile) => profile?.UserId === parseInt(id))
+                    .length > 0
+                }
+              >
                 <Then>
-                <Button onClick={() => removeFriend(props.profile.UserId)}>
+                  <Button onClick={() => removeFriend(props.profile.UserId)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
@@ -131,7 +135,7 @@ function User(props) {
                   </Button>
                 </Then>
                 <Else>
-                <Button onClick={() => addFriend(props.profile.UserId)}>
+                  <Button onClick={() => addFriend(props.profile.UserId)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
@@ -167,7 +171,12 @@ function User(props) {
               </Button>
             </div>
           </Case>
-          <Case condition={location.pathname === "/search"}>
+          <Case
+            condition={
+              location.pathname === "/search" ||
+              location.pathname === "/createSquad"
+            }
+          >
             <Link to={`/profile/${props.profile ? props.profile.UserId : " "}`}>
               <Button>Profile</Button>
             </Link>
