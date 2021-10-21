@@ -12,7 +12,7 @@ import SquadMember from '../components/SquadMember';
 
 const schema = yup.object().shape({
   bio: yup.string().required('You need a bio'),
-  game: yup.string().required('You must select a game!'),
+  games: yup.string().required('You must select a game!'),
 });
 
 function ProfileCreate() {
@@ -26,7 +26,7 @@ function ProfileCreate() {
   } = useForm({
     resolver: yupResolver(schema),
     mode: 'onTouched',
-    defaultValues: { bio: '', game: '' },
+    defaultValues: { bio: '', games: '' },
   });
 
   async function onSubmit(data) {
@@ -58,7 +58,7 @@ function ProfileCreate() {
             <SquadMember>
               <Image
                 onClick={() => {
-                  setValue('game', game.name);
+                  setValue('games', game.name);
                 }}
                 src={game.image}
               />
