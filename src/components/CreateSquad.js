@@ -47,8 +47,7 @@ function CreateSquad() {
     };
 
     let response = await axios(config);
-    console.log(response);
-    history.push('/squads');
+    history.push('/squad');
   }
 
   return (
