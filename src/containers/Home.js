@@ -4,8 +4,9 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { LoginContext } from "../context/LoginContext";
 
 import User from '../components/User';
-import Feed from '../components/Feed';
+import Hero from '../components/Hero';
 import Friends from '../components/Friends';
+import Articles from '../components/Articles';
 
 function Home() {
 
@@ -20,7 +21,8 @@ function Home() {
             <Friends />
           </Col>
           <Col xs={12} lg={8}>
-            <Feed />
+            <Hero />
+            <Articles />
           </Col>
         </Row>
       </Container>
