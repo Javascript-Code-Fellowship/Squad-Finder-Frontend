@@ -6,6 +6,7 @@ import { Col, Container, Image, Row } from "react-bootstrap";
 
 import User from "../components/User";
 import Friends from "../components/Friends";
+import gameList from "../assets/gamelist";
 
 import { LoginContext } from "../context/LoginContext";
 
@@ -22,6 +23,7 @@ function Profile(props) {
 
   const [profile, setProfile] = useState(null);
   const [squads, setSquads] = useState([]);
+  const [game, setGame] = useState({});
 
   async function viewProfile() {
     if (loginContext.isLoggedIn) {
@@ -52,12 +54,13 @@ function Profile(props) {
   useEffect(() => {
     viewProfile();
     viewSquads();
+    let image = gameList.filter((game) => game.name === profile?.games)[0]
+    setGame(image);
   }, [id]);
 
   //the second when condition isn't working yet because the profile isn't being saved to the API
   return (
     <When condition={loginContext.isLoggedIn}>
-      {console.log("profile path: ", location.pathname)}
       <Container className="profile" fluid>
         <Row>
           <Col xs={12} lg={4}>
@@ -73,19 +76,21 @@ function Profile(props) {
               <h2>MY SQUADS</h2>
               <If condition={squads?.squads?.length > 0}>
                 <Then>
-                  {squads.squads?.map((squad) => (
+                  {squads.squads?.map(() => (
                     <Image src={squadImg} roundedCircle fluid />
                   ))}
                 </Then>
               </If>
             </article>
             <article>
-              <h2>MY FAVORITES</h2>
-              <div className="games">
-                <Image src={Apex} rounded />
-                <Image src={Fortnite} rounded />
-                <Image src={Mario} rounded />
-              </div>
+              <If condition={profile !== null}>
+                <Then>
+                  <h2>MY FAVORITE GAME</h2>
+                  <div className="games">
+                    <Image src={game?.image} rounded />
+                  </div>
+                </Then>
+              </If>
             </article>
           </Col>
         </Row>
