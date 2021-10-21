@@ -16,15 +16,15 @@ function Home() {
     <div>
       <Container fluid>
         <Row>
-
+          <When condition={loginContext.isLoggedIn}>
           <Col xs={12} lg={4}>
             <User profile={loginContext.user.user}/>
             <Friends />
           </Col>
-          <Col xs={12} lg={8}>
+          </When>
+          <Col xs={12} lg={loginContext.isLoggedIn ? 8 : 12}>
             <Hero />
             <Articles />
-
           </Col>
         </Row>
       </Container>
