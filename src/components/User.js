@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from "react";
-import { Case, Default, Switch, When } from "react-if";
+import { Case, Default, Else, If, Then, Switch, When } from "react-if";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { Button, Card } from "react-bootstrap";
 import axios from "axios";
@@ -25,9 +25,14 @@ function User(props) {
       headers: { authorization: `Bearer ${loginContext.user.token}` },
     };
 
-    let response = await axios(config);
-    console.log(response);
+    await axios(config);
   }
+
+  async function removeFriend() {
+    // STRETCH: Add ability to remove a friend
+
+  }
+
   async function blockFriend(id) {
     console.log("blocked");
     // const config = {
@@ -38,8 +43,6 @@ function User(props) {
     // await axios(config);
   }
 
-  //still needs to hide or remove the request. Probably could be solved with integration with the API and triggering a refresh of the DB pull or requests as the API does remove the request.
-  //will probably have to make these function async
   async function acceptRequest(id) {
     const config = {
       method: "post",
@@ -48,6 +51,7 @@ function User(props) {
     };
     await axios(config);
     props.getRequests();
+    console.log("friends list: ", friends);
   }
 
   async function rejectRequest(id) {
@@ -105,26 +109,50 @@ function User(props) {
             }
           >
             <div>
-              <When condition={!friends.includes(props.profile)}>
+              <If condition={friends.filter(profile => profile.UserId === parseInt(id)).length > 0}>
+                {console.log("condition for friend: ", props.profile)}
+                {console.log("condition eval: ", friends.filter(profile => profile.UserId === id).length > 0)}
+                <Then>
+                <Button onClick={() => removeFriend(props.profile.UserId)}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-people-fill"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                      <path
+                        fill-rule="evenodd"
+                        d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"
+                      />
+                      <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+                    </svg>
+                    Remove Friend
+                  </Button>
+                </Then>
+                <Else>
                 <Button onClick={() => addFriend(props.profile.UserId)}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    class="bi bi-people-fill"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                    <path
-                      fill-rule="evenodd"
-                      d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"
-                    />
-                    <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
-                  </svg>
-                  Add Friend
-                </Button>
-              </When>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-people-fill"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                      <path
+                        fill-rule="evenodd"
+                        d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"
+                      />
+                      <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+                    </svg>
+                    Add Friend
+                  </Button>
+                </Else>
+              </If>
               <Button onClick={() => blockFriend(props.profile.UserId)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
