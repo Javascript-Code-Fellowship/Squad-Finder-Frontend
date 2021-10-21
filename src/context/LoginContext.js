@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import base64 from "base-64";
+import cookie from "react-cookies";
 
 export const LoginContext = React.createContext();
 
@@ -10,6 +11,7 @@ function Login(props) {
   const [show, setShow] = useState(false);
 
   function logout() {
+    cookie.remove("auth");
     setUser({});
     setIsLoggedIn(false);
   }
@@ -30,8 +32,7 @@ function Login(props) {
     let results = await axios(config);
     setUser(results.data);
     setIsLoggedIn(true);
-    console.log("sign in", results.data);
-    // cookie.save("auth", results.data.token);
+    cookie.save("auth", results.data);
   }
 
   async function signUp(e) {
@@ -48,7 +49,7 @@ function Login(props) {
     );
     setUser(results.data);
     setIsLoggedIn(true);
-    console.log("sign up", results.data);
+    cookie.save("auth", results.data);
   }
 
   const context = {
@@ -62,6 +63,14 @@ function Login(props) {
     signIn,
     signUp,
   };
+
+  useEffect(() => {
+    const userCookie = cookie.load("auth") || {};
+    if (cookie.load("auth")) {
+      setIsLoggedIn(true);
+    }
+    setUser(userCookie);
+  }, []);
 
   return (
     <LoginContext.Provider value={context}>
