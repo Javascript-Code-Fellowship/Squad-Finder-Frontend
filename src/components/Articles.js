@@ -13,18 +13,18 @@ function Articles() {
   }
 
   return ( 
-    <div>
+    <>
       <div className="feedLayout">
         <Button onClick={toggleLayout} className="showGrid">{gridLayout ? "SHOW AS LIST" : "SHOW AS GRID"}</Button>
       </div>
         <Iframe className="hero" url={gridLayout ? grid : list}
         id="hero"
         frameborder="0"
-        width="98%"
+        width="100%"
         height="2000px"
         scrolling="no"
         />
-    </div>
+    </>
   );
 }
 

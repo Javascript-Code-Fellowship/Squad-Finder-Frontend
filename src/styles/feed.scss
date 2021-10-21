@@ -13,12 +13,13 @@ iframe:nth-child(2) {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  padding: 0vw 1.75vw;
+  padding: 0vw .5vw;
   
   button {
     background-color: $purple;
     color: $white;
     border: none;
+    margin-bottom: 1vh;
   }
   
 }
