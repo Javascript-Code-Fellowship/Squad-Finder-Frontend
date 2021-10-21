@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import { Case, Switch, When } from "react-if";
+import { If, Then, When } from "react-if";
 import { Col, Container, Image, Row } from "react-bootstrap";
 
 import User from "../components/User";
 import Friends from "../components/Friends";
+import gameList from "../assets/gamelist";
 
 import { LoginContext } from "../context/LoginContext";
 
@@ -21,6 +22,8 @@ function Profile(props) {
   const { id } = useParams();
 
   const [profile, setProfile] = useState(null);
+  const [squads, setSquads] = useState([]);
+  const [game, setGame] = useState({});
 
   async function viewProfile() {
     if (loginContext.isLoggedIn) {
@@ -35,14 +38,29 @@ function Profile(props) {
     }
   }
 
+  async function viewSquads() {
+    if (loginContext.isLoggedIn) {
+      const config = {
+        method: "get",
+        url: `https://squadfinderapp.herokuapp.com/squads`,
+        headers: { authorization: `Bearer ${loginContext.user.token}` },
+      };
+
+      let response = await axios(config);
+      setSquads(response.data);
+    }
+  }
+
   useEffect(() => {
     viewProfile();
+    viewSquads();
+    let image = gameList.filter((game) => game.name === profile?.games)[0]
+    setGame(image);
   }, [id]);
 
   //the second when condition isn't working yet because the profile isn't being saved to the API
   return (
     <When condition={loginContext.isLoggedIn}>
-      {console.log("profile path: ", location.pathname)}
       <Container className="profile" fluid>
         <Row>
           <Col xs={12} lg={4}>
@@ -56,15 +74,23 @@ function Profile(props) {
             </article>
             <article className="squads-carosel">
               <h2>MY SQUADS</h2>
-              <Image src={squadImg} roundedCircle fluid />
+              <If condition={squads?.squads?.length > 0}>
+                <Then>
+                  {squads.squads?.map(() => (
+                    <Image src={squadImg} roundedCircle fluid />
+                  ))}
+                </Then>
+              </If>
             </article>
             <article>
-              <h2>MY FAVORITES</h2>
-              <div className="games">
-                <Image src={Apex} rounded />
-                <Image src={Fortnite} rounded />
-                <Image src={Mario} rounded />
-              </div>
+              <If condition={profile !== null}>
+                <Then>
+                  <h2>MY FAVORITE GAME</h2>
+                  <div className="games">
+                    <Image src={game?.image} rounded />
+                  </div>
+                </Then>
+              </If>
             </article>
           </Col>
         </Row>

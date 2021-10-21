@@ -8,6 +8,7 @@ import axios from 'axios';
 import gamelist from '../assets/gamelist';
 import { LoginContext } from '../context/LoginContext';
 import { useHistory } from 'react-router';
+import SquadMember from '../components/SquadMember';
 
 const schema = yup.object().shape({
   bio: yup.string().required('You need a bio'),
@@ -29,7 +30,6 @@ function ProfileCreate() {
   });
 
   async function onSubmit(data) {
-    console.log(data);
     const config = {
       method: 'post',
       url: `https://squadfinderapp.herokuapp.com/profile`,
@@ -38,8 +38,6 @@ function ProfileCreate() {
     };
 
     let response = await axios(config);
-    console.log(response);
-    console.log(loginContext);
     history.push(`/profile/${loginContext.user.user.id}`);
   }
 
@@ -57,12 +55,14 @@ function ProfileCreate() {
         <h4>Favorite Game</h4>
         <div className="profile-games">
           {gamelist.map((game) => (
-            <Image
-              onClick={() => {
-                setValue('game', game.name);
-              }}
-              src={game.image}
-            />
+            <SquadMember>
+              <Image
+                onClick={() => {
+                  setValue('game', game.name);
+                }}
+                src={game.image}
+              />
+            </SquadMember>
           ))}
         </div>
         <Button type="submit" variant="primary">

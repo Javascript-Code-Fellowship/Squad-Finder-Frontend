@@ -6,12 +6,14 @@ import Member from "../components/Member";
 import { LoginContext } from "../context/LoginContext";
 
 const dummySquads = [
-  { name: "Squad Name", members: ["David", "Jaya", "Jess"] },
-  { name: "New Squad", members: ["Gina", "Jaya", "Jess"] },
+  { name: "Squad Name", squadmates: ["David", "Jaya", "Jess"] },
+  { name: "New Squad", squadmates: ["Gina", "Jaya", "Jess"] },
 ];
 
 function Squad() {
-  const [squads, setSquads] = useState([]);
+  const [squads, setSquads] = useState([
+    { name: "Squad Name", squadmates: ["David", "Jaya", "Jess"] },
+  ]);
 
   const loginContext = useContext(LoginContext);
 
@@ -23,8 +25,8 @@ function Squad() {
         headers: { authorization: `Bearer ${loginContext.user.token}` },
       };
       let results = await axios(config);
-      console.log(results.data);
-      setSquads(results.data);
+      console.log("@@@@@", results.data.squads);
+      setSquads(results.data.squads);
     }
     getSquads();
   }, [loginContext.user.token]);
@@ -35,11 +37,11 @@ function Squad() {
         <Button variant="green">CREATE SQUAD</Button>
       </Link>
       <Accordion>
-        {dummySquads.map((squad, idx) => (
+        {squads?.map((squad, idx) => (
           <Accordion.Item eventKey={idx}>
             <Accordion.Header>{squad.name}</Accordion.Header>
             <Accordion.Body>
-              {squad.members.map((member, idx) => (
+              {squad.squadmates.map((member, idx) => (
                 <Member name={member.name} profilePhoto={idx} />
               ))}
             </Accordion.Body>
