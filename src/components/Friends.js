@@ -3,6 +3,7 @@ import { When } from "react-if";
 import { Link } from "react-router-dom";
 import { Card, Image } from "react-bootstrap";
 import axios from "axios";
+import ProfilePhotos from "../assets/profileImageList";
 
 import { LoginContext } from "../context/LoginContext";
 
@@ -19,6 +20,12 @@ const images = [jaya, david, gina];
 function Friends() {
   const [friends, setFriends] = useState([]);
   const loginContext = useContext(LoginContext);
+
+  function findPhoto(name) {
+    const image = ProfilePhotos.filter((image) => name === image.name);
+    console.log(image[0].image);
+    return image[0].image;
+  }
 
   useEffect(() => {
     async function getFriends() {
@@ -42,7 +49,7 @@ function Friends() {
         <div className="friends-list">
           {friends.map((friend, idx) => (
             <Link to={`/profile/${friend?.UserId}`}>
-              <Image src={images[idx]} roundedCircle />
+              <Image src={findPhoto(friend.username)} roundedCircle />
             </Link>
           ))}
         </div>

@@ -1,25 +1,26 @@
-import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
-import { If, Then, When } from 'react-if';
-import { Col, Container, Image, Row } from 'react-bootstrap';
+import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
+import { If, Then, When } from "react-if";
+import { Col, Container, Image, Row } from "react-bootstrap";
 
-import User from '../components/User';
-import Friends from '../components/Friends';
-import gameList from '../assets/gamelist';
+import User from "../components/User";
+import Friends from "../components/Friends";
+import gameList from "../assets/gamelist";
 
-import { LoginContext } from '../context/LoginContext';
+import { LoginContext } from "../context/LoginContext";
 
-import squadImg from '../assets/potato.jpg';
-import Apex from '../assets/apex.jpg';
-import Fortnite from '../assets/Fortnite.jpg';
-import Mario from '../assets/mario.jpg';
+import squadImg from "../assets/potato.jpg";
+import Apex from "../assets/apex.jpg";
+import Fortnite from "../assets/Fortnite.jpg";
+import Mario from "../assets/mario.jpg";
 
 function Profile(props) {
   const loginContext = useContext(LoginContext);
   const location = useLocation();
   const { id } = useParams();
 
+  const [loading, setLoading] = useState(true);
   const [profile, setProfile] = useState(null);
   const [squads, setSquads] = useState([]);
   const [game, setGame] = useState({});
@@ -27,20 +28,21 @@ function Profile(props) {
   async function viewProfile() {
     if (loginContext.isLoggedIn) {
       const config = {
-        method: 'get',
+        method: "get",
         url: `https://squadfinderapp.herokuapp.com/profile/${id}`,
         headers: { authorization: `Bearer ${loginContext.user.token}` },
       };
 
       let response = await axios(config);
       setProfile(response.data);
+      setLoading(false);
     }
   }
 
   async function viewSquads() {
     if (loginContext.isLoggedIn) {
       const config = {
-        method: 'get',
+        method: "get",
         url: `https://squadfinderapp.herokuapp.com/squads`,
         headers: { authorization: `Bearer ${loginContext.user.token}` },
       };
@@ -57,7 +59,6 @@ function Profile(props) {
 
   useEffect(() => {
     let image = gameList.filter((game) => game.name === profile?.games)[0];
-    console.log(image);
     setGame(image);
   }, [viewProfile]);
 
@@ -67,13 +68,15 @@ function Profile(props) {
       <Container className="profile" fluid>
         <Row>
           <Col xs={12} lg={4}>
-            <User profile={profile} />
+            <When condition={!loading}>
+              <User profile={profile} />
+            </When>
             <Friends />
           </Col>
           <Col className="about" xs={12} lg={8}>
             <article>
               <h2>ABOUT ME:</h2>
-              <p>{profile ? profile.bio : ''}</p>
+              <p>{profile ? profile.bio : ""}</p>
             </article>
             <article className="squads-carosel">
               <h2>MY SQUADS</h2>
