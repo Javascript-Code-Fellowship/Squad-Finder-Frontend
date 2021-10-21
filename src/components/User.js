@@ -4,16 +4,18 @@ import { Link, useLocation, useParams } from "react-router-dom";
 import { Button, Card } from "react-bootstrap";
 import axios from "axios";
 
-import ProfilePhoto from "../assets/Jess.png";
+import ProfilePhotos from "../assets/profileImageList";
 import { LoginContext } from "../context/LoginContext";
 
 let online = true;
 
 function User(props) {
+  console.log("!!!!!", props.profile);
   const loginContext = useContext(LoginContext);
   const location = useLocation();
   const { id } = useParams();
 
+  const [profilePhoto, setProfilePhoto] = useState();
   const [friends, setFriends] = useState([]);
   const [pendingRequests, setPendingRequests] = useState([]);
 
@@ -62,25 +64,29 @@ function User(props) {
     props.getRequests();
   }
 
-   async function getFriends() {
-     if (loginContext.isLoggedIn) {
-       const config = {
-         method: "get",
-         url: `https://squadfinderapp.herokuapp.com/friends`,
-         headers: { authorization: `Bearer ${loginContext.user.token}` },
-       };
-       let response = await axios(config);
-       setFriends(response.data);
-       
-     }
-   }
+  async function getFriends() {
+    if (loginContext.isLoggedIn) {
+      const config = {
+        method: "get",
+        url: `https://squadfinderapp.herokuapp.com/friends`,
+        headers: { authorization: `Bearer ${loginContext.user.token}` },
+      };
+      let response = await axios(config);
+      setFriends(response.data);
+    }
+  }
 
+  useEffect(() => {
+    getFriends();
+  }, []);
 
-
-
-  // useEffect(() => {
-  //   getFriends();
-  // }, []);
+  useEffect(() => {
+    const image = ProfilePhotos.filter(
+      (image) => props?.profile?.username === image.name
+    );
+    console.log(image[0].image);
+    setProfilePhoto(image[0].image);
+  }, [props.profile]);
 
   return (
     <When condition={loginContext.isLoggedIn}>
@@ -88,7 +94,7 @@ function User(props) {
         <Card.Title>
           @{props.profile ? props.profile.username.toUpperCase() : ""}
         </Card.Title>
-        <Card.Img variant="bottom" src={ProfilePhoto} roundedCircle />
+        <Card.Img variant="bottom" src={profilePhoto} roundedCircle />
         <When condition={online}>
           <div className="online">
             <span className="online-icon"> </span>

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Button, Accordion } from "react-bootstrap";
 import axios from "axios";
+import { When } from "react-if";
 import Member from "../components/Member";
 import { LoginContext } from "../context/LoginContext";
 
@@ -12,7 +13,7 @@ const dummySquads = [
 
 function Squad() {
   const [squads, setSquads] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   const loginContext = useContext(LoginContext);
 
   useEffect(() => {
@@ -23,8 +24,8 @@ function Squad() {
         headers: { authorization: `Bearer ${loginContext.user.token}` },
       };
       let results = await axios(config);
-      console.log("@@@@@", results.data.squads);
       setSquads(results.data.squads);
+      setLoading(false);
     }
     getSquads();
   }, [loginContext.user.token]);
@@ -40,7 +41,9 @@ function Squad() {
             <Accordion.Header>{squad.name}</Accordion.Header>
             <Accordion.Body>
               {squad.squadmates.map((member, idx) => (
-                <Member name={member.name} profilePhoto={idx} />
+                <When condition={!loading}>
+                  <Member name={member} profilePhoto={member} />
+                </When>
               ))}
             </Accordion.Body>
           </Accordion.Item>
