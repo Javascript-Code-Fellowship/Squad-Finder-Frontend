@@ -87,7 +87,7 @@ function CreateSquad() {
               ]);
             }}
             >
-              <SquadMember className="createSquadCard">
+              <SquadMember >
                 <User profile={friend} />
               </SquadMember>
             </div>

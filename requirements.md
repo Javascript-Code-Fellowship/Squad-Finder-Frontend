@@ -2,9 +2,28 @@
 
 ## Software Requirements:
 
-- Axios @0.23.0
-- React @17.0.2
-- Bootstrap v5.1
+"@auth0/auth0-react": "^1.8.0",
+"@hookform/resolvers": "^2.8.2",
+"@testing-library/jest-dom": "^5.14.1",
+"@testing-library/react": "^11.2.7",
+"@testing-library/user-event": "^12.8.3",
+"axios": "^0.23.0",
+"base-64": "^1.0.0",
+"bootstrap": "^5.1.1",
+"bootstrap-icons": "^1.6.1",
+"node-sass": "^6.0.1",
+"react": "^17.0.2",
+"react-bootstrap": "^2.0.0-rc.1",
+"react-cookies": "^0.1.1",
+"react-dom": "^17.0.2",
+"react-hook-form": "^7.17.4",
+"react-if": "^4.1.1",
+"react-iframe": "^1.8.0",
+"react-router": "^5.2.1",
+"react-router-dom": "^5.3.0",
+"react-scripts": "4.0.3",
+"web-vitals": "^1.1.2",
+"yup": "^0.32.11"
 
 ## API Requirements:
 
@@ -130,4 +149,4 @@ https://trello.com/b/3XoPbjkP/401-mid-term
 
 ## UML / Whiteboard Diagram
 
-TBD
+

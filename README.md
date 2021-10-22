@@ -21,3 +21,5 @@ Use this app to find your next gaming group. Once you sign up, create your profi
 ## Development Plans
 
 - Add in-app chat
+- Add routes and profiles to track game achievements
+- Connect to a third-party gaming library to allow users to favorite any game in API database
