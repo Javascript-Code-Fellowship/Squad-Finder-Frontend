@@ -1,7 +1,6 @@
-@import './vars.scss';
+@import "./vars.scss";
 
 .user.card {
-  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,7 +9,6 @@
   padding: $gutterMedium;
   color: $white;
   margin: $gutterSmall;
-  
 
   img {
     width: 65%;
@@ -25,7 +23,6 @@
     margin-bottom: 1vh;
 
     .online-icon {
-      
       background-color: $green;
       border-color: $white;
       border-width: 1px;
@@ -36,7 +33,7 @@
     }
 
     p {
-      margin-left: .5rem;
+      margin-left: 0.5rem;
     }
 
     .card-title {
@@ -44,17 +41,16 @@
     }
   }
 
-  
   svg {
-    margin-right: 1vw;;
+    margin-right: 1vw;
     flex-grow: 1;
   }
-  
+
   button {
     margin-right: 30%;
     margin-top: 2vh;
     margin-left: 13.5%;
-    padding: .75rem 2.5rem;
+    padding: 0.75rem 2.5rem;
     width: 70%;
     color: $white;
   }
@@ -66,52 +62,51 @@
     width: 100%;
   }
 
- .homeUserButtons {
-   button {
+  .homeUserButtons {
+    button {
+      margin-right: 30%;
+      margin-top: 2vh;
+      margin-left: 13.5%;
+      padding: 0.75rem 2.5rem;
+      width: 70%;
+      color: $white;
+    }
+  }
+
+  .friendButton {
     margin-right: 30%;
     margin-top: 2vh;
-    margin-left: 13.5%;
-    padding: .75rem 2.5rem;
-    width: 70%;
+    margin-left: 20%;
+    padding: 0.75rem 2.5rem;
+    max-width: 70%;
     color: $white;
-   }
- } 
- 
- .friendButton {
-   margin-right: 30%;
-   margin-top: 2vh;
-   margin-left: 20%;
-   padding: .75rem 2.5rem;
-   max-width: 70%;
-   color: $white;
-   position: relative;
-   left: 13.5%;
- }
+    position: relative;
+    left: 13.5%;
+  }
 
- .acceptButton {
-  margin-right: 30%;
-  margin-top: 2vh;
-  margin-left: 20%;
-  padding: .75rem 2.5rem;
-  max-width: 70%;
-  color: $white;
-  position: relative;
-  left: 5%;
-  margin-bottom: 2vh;
- }
+  .editProfile {
+    position: relative;
+    left: 10%;
+  }
 
- .rejectButton {
-  margin-right: 30%;
-  margin-top: 2vh;
-  margin-left: 20%;
-  padding: .75rem 2.5rem;
-  max-width: 70%;
-  color: $white;
-  
- }
+  .acceptButton {
+    margin-right: 30%;
+    margin-top: 2vh;
+    margin-left: 20%;
+    padding: 0.75rem 2.5rem;
+    max-width: 70%;
+    color: $white;
+    position: relative;
+    left: 5%;
+    margin-bottom: 2vh;
+  }
 
+  .rejectButton {
+    margin-right: 30%;
+    margin-top: 2vh;
+    margin-left: 20%;
+    padding: 0.75rem 2.5rem;
+    max-width: 70%;
+    color: $white;
+  }
 }
-
-
-
-

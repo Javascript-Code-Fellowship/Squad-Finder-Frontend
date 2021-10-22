@@ -48,12 +48,12 @@ function Friends() {
         </Card.Title>
         <div className="friends-list">
           {friends.map((friend, idx) => (
-            <>
-            <Link to={`/profile/${friend?.UserId}`}>
-              <Image src={findPhoto(friend.username)} roundedCircle />
-            </Link>
-            {/* <h3>{friend.username}</h3> */}
-            </>
+            <div>
+              <Link to={`/profile/${friend?.UserId}`}>
+                <Image src={findPhoto(friend.username)} roundedCircle />
+              </Link>
+              <h3>{friend.username}</h3>
+            </div>
           ))}
         </div>
       </Card>
