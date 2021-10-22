@@ -13,7 +13,7 @@ const pics = { Jess, David, Gina, Jaya, Rachael };
 function Member(props) {
   console.log(props);
   return (
-    <Card fluid>
+    <Card className="memberCard" fluid>
       <Card.Img variant="top" src={pics[props.profilePhoto]} roundedCircle />
       <Card.Title>@{props.name}</Card.Title>
       {/* <When condition={admin}>

@@ -30,6 +30,22 @@
   .accordion-body {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: left;
+  }
+
+  .memberCard {
+    display: flex;
+    align-items: center;
+    max-width: 25%;
+    background-color: $lightGrey;
+    border: none;
+
+    img {
+      width: 70%;
+    }
+
+    .card-title {
+      margin: 2vh 0vh;
+    }
   }
 }

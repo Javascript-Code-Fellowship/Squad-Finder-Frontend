@@ -44,13 +44,16 @@ function Friends() {
     <When condition={loginContext.isLoggedIn}>
       <Card className="friends" fluid>
         <Card.Title>
-          <Link to="/friendRequests">Friends</Link>
+          <Link to="/friendRequests">VIEW ALL FRIENDS</Link>
         </Card.Title>
         <div className="friends-list">
           {friends.map((friend, idx) => (
+            <>
             <Link to={`/profile/${friend?.UserId}`}>
               <Image src={findPhoto(friend.username)} roundedCircle />
             </Link>
+            {/* <h3>{friend.username}</h3> */}
+            </>
           ))}
         </div>
       </Card>

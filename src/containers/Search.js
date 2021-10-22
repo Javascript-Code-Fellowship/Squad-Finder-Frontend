@@ -18,7 +18,8 @@ function Search() {
   function searchUsers(e) {
     e.preventDefault();
     console.log(e.target.searchUsers.value);
-    // setFriendSearch(users.filter((user) => user.name === e.target.searchUsers.value));
+    // const result = setFriendSearch(users.filter((user) => user.username === e.target.searchUsers.value));
+    // console.log(result)
   }
 
   useEffect(() => {
