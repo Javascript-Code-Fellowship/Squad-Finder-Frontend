@@ -1,4 +1,4 @@
-# squadfinder-front2
+# Squad-Finder-Frontend
 
 ## A social media web application for connecting gamers to other gamers based on preferences, shared interests, and more. This repository holds the front-end architecture for the web application, utilizing React, HTML5, and CSS/React-Bootstrap/MUI.
 
@@ -23,3 +23,6 @@ Use this app to find your next gaming group. Once you sign up, create your profi
 - Add in-app chat
 - Add routes and profiles to track game achievements
 - Connect to a third-party gaming library to allow users to favorite any game in API database
+
+## Deployed Link
+https://squad-finder-frontend.herokuapp.com/
