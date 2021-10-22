@@ -122,7 +122,7 @@ function User(props) {
                 }
               >
                 <Then>
-                  <Button onClick={() => removeFriend(props.profile.UserId)}>
+                  <Button className="friendButton" onClick={() => removeFriend(props.profile.UserId)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
@@ -142,7 +142,7 @@ function User(props) {
                   </Button>
                 </Then>
                 <Else>
-                  <Button onClick={() => addFriend(props.profile.UserId)}>
+                  <Button className="friendButton" onClick={() => addFriend(props.profile.UserId)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
@@ -189,10 +189,10 @@ function User(props) {
             </Link>
           </Case>
           <Case condition={location.pathname === "/friendRequests"}>
-            <Button onClick={() => acceptRequest(props.profile.UserId)}>
+            <Button className="acceptButton" onClick={() => acceptRequest(props.profile.UserId)}>
               ACCEPT
             </Button>
-            <Button onClick={() => rejectRequest(props.profile.UserId)}>
+            <Button className="rejectButton" onClick={() => rejectRequest(props.profile.UserId)}>
               REJECT
             </Button>
           </Case>

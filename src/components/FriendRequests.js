@@ -22,7 +22,7 @@ function FriendRequests() {
 
   useEffect(() => {
     getRequests();
-  }, [requests]);
+  }, []);
 
   return (
     <div>

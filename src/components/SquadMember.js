@@ -4,7 +4,7 @@ function SquadMember(props) {
   const [showBorder, setShowBorder] = useState(false);
 
   return (
-    <div
+    <div className="createSquadCard"
       onClick={() => {
         setShowBorder(!showBorder);
       }}

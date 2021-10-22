@@ -69,31 +69,31 @@ function CreateSquad() {
     <div>
       <Form className="create-squad" onSubmit={handleSubmit(onSubmit)}>
         <ControlledInput
-          title="Squad Name"
+          title="Step 1: Enter a Squad Name."
           name="name"
           control={control}
           errors={errors}
           type="input"
         />
-        <h4>Select Members</h4>
+          <h4>Step 2: Click on your friends below to add them to your squad.</h4>
+          <Button type="submit">Create Squad!</Button>
         <div className="squad-mates">
           {friends.map((friend) => (
             <div
-              onClick={() => {
-                setValue("squadmates", [
-                  ...watch("squadmates"),
-                  friend.username,
-                ]);
-              }}
+            onClick={() => {
+              setValue("squadmates", [
+                ...watch("squadmates"),
+                friend.username,
+              ]);
+            }}
             >
-              <SquadMember>
+              <SquadMember className="createSquadCard">
                 <User profile={friend} />
               </SquadMember>
             </div>
           ))}
         </div>
 
-        <Button type="submit">Create Squad!</Button>
       </Form>
     </div>
   );
