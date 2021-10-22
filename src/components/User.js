@@ -3,6 +3,7 @@ import { Case, Default, Else, If, Then, Switch, When } from "react-if";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { Button, Card } from "react-bootstrap";
 import axios from "axios";
+import stockImage from "../assets/profilepicdefault.jpg";
 
 import ProfilePhotos from "../assets/profileImageList";
 import { LoginContext } from "../context/LoginContext";
@@ -15,7 +16,7 @@ function User(props) {
   const location = useLocation();
   const { id } = useParams();
 
-  const [profilePhoto, setProfilePhoto] = useState();
+  const [profilePhoto, setProfilePhoto] = useState(stockImage);
   const [friends, setFriends] = useState([]);
   const [pendingRequests, setPendingRequests] = useState([]);
 
@@ -84,8 +85,8 @@ function User(props) {
     const image = ProfilePhotos.filter(
       (image) => props?.profile?.username === image.name
     );
-    console.log(image[0].image);
-    setProfilePhoto(image[0].image);
+    console.log(image[0]?.image);
+    setProfilePhoto(image[0]?.image || stockImage);
   }, [props.profile]);
 
   return (
@@ -122,7 +123,10 @@ function User(props) {
                 }
               >
                 <Then>
-                  <Button className="friendButton" onClick={() => removeFriend(props.profile.UserId)}>
+                  <Button
+                    className="friendButton"
+                    onClick={() => removeFriend(props.profile.UserId)}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
@@ -142,7 +146,10 @@ function User(props) {
                   </Button>
                 </Then>
                 <Else>
-                  <Button className="friendButton" onClick={() => addFriend(props.profile.UserId)}>
+                  <Button
+                    className="friendButton"
+                    onClick={() => addFriend(props.profile.UserId)}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
@@ -189,10 +196,16 @@ function User(props) {
             </Link>
           </Case>
           <Case condition={location.pathname === "/friendRequests"}>
-            <Button className="acceptButton" onClick={() => acceptRequest(props.profile.UserId)}>
+            <Button
+              className="acceptButton"
+              onClick={() => acceptRequest(props.profile.UserId)}
+            >
               ACCEPT
             </Button>
-            <Button className="rejectButton" onClick={() => rejectRequest(props.profile.UserId)}>
+            <Button
+              className="rejectButton"
+              onClick={() => rejectRequest(props.profile.UserId)}
+            >
               REJECT
             </Button>
           </Case>
